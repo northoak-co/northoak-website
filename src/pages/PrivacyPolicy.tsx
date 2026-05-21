@@ -107,7 +107,7 @@ const PrivacyPolicy = () => {
                 <li>The right to opt out of marketing communications</li>
                 <li>The right to restrict or object to certain processing activities</li>
               </ul>
-              <p className="mt-3">To exercise any of these rights, please contact us at <a href="mailto:info@northoak.com" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.com</a>.</p>
+              <p className="mt-3">To exercise any of these rights, please contact us at <a href="mailto:info@northoak.co" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.co</a>.</p>
             </div>
 
             <div>
@@ -125,7 +125,7 @@ const PrivacyPolicy = () => {
               <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
               <p className="mt-2">
                 <strong>NorthOak</strong><br />
-                Email: <a href="mailto:info@northoak.com" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.com</a>
+                Email: <a href="mailto:info@northoak.co" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.co</a>
               </p>
             </div>
           </div>

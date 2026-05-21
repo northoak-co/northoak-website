@@ -16,7 +16,7 @@ Working document. Check off items as they ship. Drafted 2026-05-07 after benchma
 
 ## Competitive parity framework
 
-Benchmark drafted 2026-05-07 after auditing five direct competitors: getmagic.com, supportninja.com, growthassistant.com, athena.com, hugoinc.com. The framework defines what NorthOak must have to be *credible* in this category (table stakes) and where to invest to *stand out* (differentiator picks). Every item below is tracked against an existing P0/P1/P2 task or flagged as a new addition.
+Benchmark drafted 2026-05-07 after auditing six direct competitors: getmagic.com, supportninja.com, growthassistant.com, athena.com, hugoinc.com, keentohire.com. The framework defines what NorthOak must have to be *credible* in this category (table stakes) and where to invest to *stand out* (differentiator picks). Every item below is tracked against an existing P0/P1/P2 task or flagged as a new addition.
 
 ### What each competitor is best at (one line)
 
@@ -25,6 +25,7 @@ Benchmark drafted 2026-05-07 after auditing five direct competitors: getmagic.co
 - **GrowthAssistant** — *the most copy-pasteable conversion stack of the five.* Published price ($3,500/mo, month-to-month), free replacements anytime, named talent profile cards with achievements, buyer-matched CMO/CRO testimonials, founder-led origin story (Jesse Pujji / Ampush). If we're going to study one site line-by-line, it's this one.
 - **Athena** — emotional/benefit-led brand for founders and execs. $3,000/mo published. Cinematic narrative testimonials. Compliance posture is weakest of the five despite the Stripe/Goldman/Sequoia logos.
 - **Hugo (hugoinc.com)** — *vertical specialization done right.* Hero: *"Outsourcing+ Built to make you better."* Names "world-class teams" instead of "VAs." Logos: Google, Meta, Faire, Upwork, Outschool, Aurora, Attentive, Topicals. Seven industry pages (Gaming, Crypto, E-commerce, Health & Wellness, SaaS, Fintech, Edtech) — comparable to GA's depth but pointed at non-marketing buyers. Treats Trust & Safety and Data/AI labelling as co-equal service lines, not add-ons. ISO 27001 + MBE + Clutch 100. Weakness: zero founder visibility, no published pricing, no comparison pages, no calculator — same gaps as Magic.
+- **Keen (keentohire.com)** — *recruiter-forward positioning.* Hero: *"We hire, manage, and give you direct access to premium talent offshore."* Where the other five lead with matching / embedded teams / pre-vetted pools, Keen leads with the hiring act itself — they recruit for you, then hand over direct access. Frames itself as "the evolution of outdated service models" and explicitly positions against agencies, freelancers, and BPOs ("lack urgency or incentives for your success"). Role breadth skews creative/marketing/sales (Graphic Designer, Social Media Manager, Video Editor, UGC Strategist, Copywriter, Creative Director, UI/UX, CSM, Email Marketing, Sales Agent, Customer Service Agent). Trust posture is thin: three named CEO testimonials (Heritage Cellars, Lancer Skincare, Remote Pharmacy), no client logo wall, no pricing, no compliance badges, no founder visibility, no guarantee. Useful as a positioning reference (recruiter framing) more than a parity benchmark.
 
 ### Table stakes — what every credible competitor has
 
@@ -60,7 +61,7 @@ Pick **two or three**, not all. Spreading thin matches the bar; depth wins.
 - **Refer-a-friend incentive program (Magic).** Low-ROI mechanic for B2B services with long sales cycles.
 - **Email-gated lead magnets early (SupportNinja's 2026 CX Outsourcing Report).** Build trust through ungated case studies first; gating belongs to companies with brand authority to trade for the email.
 
-### Honest scoring of NorthOak today vs the five
+### Honest scoring of NorthOak today vs the six
 
 - **Stronger than Athena on:** logo wall caliber (NorthOak's 20 logos compete with Athena's), role-page breadth.
 - **At parity with Hugo on:** logo caliber (both name Google/Meta-tier brands) and role-page breadth — but Hugo wins on industry depth (7 verticals vs our 0) and weak compliance posture (ISO 27001).
@@ -100,10 +101,10 @@ Highest-leverage technical work. Unlocks everything in P1.
 - [x] **Strip Lovable boilerplate from `index.html`** *(2026-05-07)*
   - Removed `<meta name="author" content="Lovable" />` and `<meta name="twitter:site" content="@Lovable" />`
   - Removed leftover TODO comments and the 28 stray blank lines between meta tags
-  - Replaced the `storage.googleapis.com/gpt-engineer-file-uploads/...` OG image with `https://northoak.com/og-image.png` (placeholder logo — see open items below)
+  - Replaced the `storage.googleapis.com/gpt-engineer-file-uploads/...` OG image with `https://northoak.co/og-image.png` (placeholder logo — see open items below)
   - Tightened title and description with category keywords ("Operations Outsourcing for High-Growth Teams"); added `og:url`, `og:site_name`, `<link rel="canonical">`
 - [x] **Generate `sitemap.xml` at build time** *(2026-05-07)* — `scripts/generate-sitemap.ts` walks `build/client/` for prerendered `index.html` files and emits `build/client/sitemap.xml`; wired up as a `postbuild` script so the sitemap always reflects what was actually shipped (no separate route list to keep in sync). 12 URLs in the current sitemap. `__spa-fallback.html` excluded.
-- [x] **Update `robots.txt`** *(2026-05-07)* — collapsed redundant per-bot `Allow:` blocks down to a single default-allow + `Sitemap: https://northoak.com/sitemap.xml`.
+- [x] **Update `robots.txt`** *(2026-05-07)* — collapsed redundant per-bot `Allow:` blocks down to a single default-allow + `Sitemap: https://northoak.co/sitemap.xml`.
 - [x] **JSON-LD on every page** *(2026-05-07)*
   - `Organization` (name, url, logo, description, contactPoint with sales email) — emitted on every page via `<script>` in `src/root.tsx`'s `Layout` (literal element so it survives child-route meta overrides)
   - `WebSite` — same approach. `SearchAction` not added because the site has no search; revisit if/when one ships.
@@ -114,13 +115,21 @@ Highest-leverage technical work. Unlocks everything in P1.
   - `Footer.tsx` — broken LinkedIn `href="#"` social-icon block removed (add back when LinkedIn URL is provided)
   - `Footer.tsx` — "View all" link to `/roles` (404) removed; the 5 individual role links remain
 
-**P0 acceptance check:** `curl -A "GPTBot" https://northoak.com/roles/crm-management` returns the role page's actual content in the HTML body (not an empty `<div id="root">`). Slack/LinkedIn link unfurls show the correct title and OG image per route.
+**P0 acceptance check:** `curl -A "GPTBot" https://northoak.co/roles/crm-management` returns the role page's actual content in the HTML body (not an empty `<div id="root">`). Slack/LinkedIn link unfurls show the correct title and OG image per route.
 
 ### Open items from completed P0 work
 
 - ~~**OG image is a placeholder.**~~ *(Resolved 2026-05-07)* — replaced with a 1200×630 NorthOak team photo at `public/og-image.png` (324KB, optimized).
 - ~~**LinkedIn URL needed.**~~ *(Resolved 2026-05-07)* — `https://www.linkedin.com/company/northoak`. Footer icon restored (with `target="_blank"` + `rel="noopener noreferrer"`); URL added to `Organization` JSON-LD `sameAs` in `src/root.tsx`.
-- **Branch `seo/rr-v7-migration` not yet merged.** All P0 work is on this branch awaiting review + merge to `main`. Manual smoke checks recommended before deploy: every route at `bun run dev`, then `bun run build` and `bunx serve build/client` to confirm production output behaves the same.
+- ~~**Branch `seo/rr-v7-migration` not yet merged.**~~ *(Resolved 2026-05-07)* — merged to `main` via PR #1 after fixing a Vercel build failure caused by stale pre-migration lockfiles (`package-lock.json` + `bun.lockb`); both removed, only `bun.lock` remains. Vercel preview deploy passed before merge.
+
+### Issues surfaced by post-merge P0 review (2026-05-07)
+
+- **Framer Motion `initial={{ opacity: 0 }}` is baked into prerendered HTML as `style="opacity:0"`.** 64 occurrences on the homepage, including every animated H1/H2 (e.g. "Unblocking bottlenecks so you can focus on growth", "Work with the best"). Role pages are affected too — the `<h1>CRM Management</h1>` ships with `opacity:0` baked in. The text content is still in the DOM, so pure text-extracting crawlers (most AI bots) should see it; CSS-aware extractors might treat it as hidden. Likely fine but unverified — confirm post-deploy with `curl -sA "GPTBot" https://northoak.co/roles/crm-management | grep -c "CRM Management"` (expect ≥1) and a text-extraction spot check (`lynx -dump` or similar). If the verification suggests text isn't being seen, swap `motion.h1`/`motion.h2` → static elements with Tailwind enter animations that don't bake `opacity:0` into the SSR output.
+- **`Index.tsx` (homepage) has no own `meta` export.** It inherits `root.tsx`'s default meta — works today, but fragile. Anyone editing root meta affects every page that doesn't override (currently homepage + 404). Fix: add an explicit `meta = () => pageMeta({...})` to `Index.tsx` and treat root meta as a fallback-only safety net.
+- **`NotFound.tsx` has no `meta` export and no `noindex`.** It currently inherits the homepage title/description, which is misleading. Add a `meta` export with `{ name: "robots", content: "noindex" }` so any URL that resolves to it isn't indexed.
+- **404 HTTP status code behavior is unverified.** RR v7 emits `__spa-fallback.html`, but `vercel.json` has no rewrite using it — so Vercel serves its default 404 page for unknown URLs. SEO is fine (correct 404 status), but the branded `NotFound.tsx` only renders during client-side navigation. Verify with `curl -I https://northoak.co/does-not-exist` (expect `HTTP/2 404`). Optional follow-up: wire a Vercel rewrite to serve `__spa-fallback.html` for unknown paths *with status 404* if we want the branded experience.
+- **`Pricing.tsx` already has 5 FAQs but no `FAQPage` JSON-LD.** Quick P1 win — wrap the existing FAQs with schema markup to capture LLM citations.
 
 ---
 
@@ -231,7 +240,7 @@ Brand mentions correlate with AI citation at r=0.664 — strongest single factor
 
 - [x] ~~RR v7 vs Astro for the rendering migration~~ — picked RR v7 framework mode, shipped 2026-05-07.
 - [ ] Pick the two verticals for P2 #2 — depends on which 2 case studies we can publish first.
-- [ ] Decide whether to publish pricing on `/pricing` or keep it as a "Talk to us" funnel. Athena and Time Etc publish; Belay does not. Publishing filters out enterprise-only buyers; hiding filters out fast-moving SMB.
+- [x] ~~Decide whether to publish pricing on `/pricing` or keep it as a "Talk to us" funnel.~~ *(Already decided — `/pricing` publishes $20/hr ad-hoc, $2,000/mo Junior Associate, $2,500/mo Senior Associate, $3,500/mo Team Lead. Aligns with GrowthAssistant ($3,500/mo) and Athena ($3,000/mo) as category leaders; differentiates from Magic + SupportNinja's hidden pricing. Re-evaluate as a differentiator pick — see below.)*
 - [ ] SOC 2 status — is NorthOak SOC 2 Type II, in progress, or neither? Wording on `/security` depends on this.
 - [x] ~~Provide the canonical NorthOak LinkedIn company URL.~~ *(2026-05-07: `https://www.linkedin.com/company/northoak`)*
 - [x] ~~Provide a designed 1200×630 OG image.~~ *(2026-05-07: NorthOak team photo, 1200×630, 324KB)*
@@ -276,3 +285,4 @@ Brand mentions correlate with AI citation at r=0.664 — strongest single factor
 - [SupportNinja](https://www.supportninja.com/) — strongest compliance posture (SOC 2 Type 2, PCI-DSS 4, HIPAA, GDPR), CEO video, "Privacy-First" pillar
 - [GrowthAssistant](https://growthassistant.com/) — most copy-pasteable conversion stack (published $3,500/mo, free replacements, named talent cards, founder-led origin)
 - [Hugo (hugoinc.com)](https://hugoinc.com/) — vertical specialization done right; Google/Meta/Faire/Upwork logo caliber; "Outsourcing+" named methodology; ISO 27001 + MBE; treats Trust & Safety + Data/AI as co-equal service lines
+- [Keen (keentohire.com)](https://keentohire.com/) — recruiter-forward positioning ("We hire, manage, and give you direct access to premium talent offshore"); leans on the hiring act itself rather than matching/pre-vetted-pool framing; thin trust artifacts (no logos, pricing, compliance, founder, or guarantee); 3 named CEO testimonials

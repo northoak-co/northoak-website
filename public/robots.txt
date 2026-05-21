@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://northoak.com/sitemap.xml
+Sitemap: https://northoak.co/sitemap.xml

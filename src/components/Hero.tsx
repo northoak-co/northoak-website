@@ -334,7 +334,7 @@ const Hero = () => {
             duration: 0.5,
             delay: 0.3
           }} className="text-xl md:text-2xl font-semibold text-foreground text-center mb-8">
-              A vetted team of global operations experts
+              Which function are you hiring for?
             </motion.h2>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8">
               {solutions.map((solution, index) => <Link key={solution.name} to={solution.link} className="group">

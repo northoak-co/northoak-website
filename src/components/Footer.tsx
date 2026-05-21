@@ -42,10 +42,10 @@ const Footer = () => {
             </motion.div>
             
             <a
-              href="mailto:info@northoak.com"
+              href="mailto:info@northoak.co"
               className="text-foreground hover:text-sage transition-colors underline block mb-6"
             >
-              info@northoak.com
+              info@northoak.co
             </a>
 
             <div className="flex items-center gap-3">

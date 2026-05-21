@@ -100,7 +100,7 @@ const TermsOfService = () => {
               <p>If you have any questions about these Terms of Service, please contact us at:</p>
               <p className="mt-2">
                 <strong>NorthOak</strong><br />
-                Email: <a href="mailto:info@northoak.com" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.com</a>
+                Email: <a href="mailto:info@northoak.co" className="text-sage hover:text-sage-dark underline transition-colors">info@northoak.co</a>
               </p>
             </div>
           </div>

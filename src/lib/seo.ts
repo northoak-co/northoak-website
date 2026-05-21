@@ -1,6 +1,6 @@
 import type { MetaDescriptor } from "react-router";
 
-export const SITE_URL = "https://northoak.com";
+export const SITE_URL = "https://northoak.co";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 type PageMetaInput = {

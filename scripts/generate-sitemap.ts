@@ -7,7 +7,7 @@
 import { readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-const SITE_URL = "https://northoak.com";
+const SITE_URL = "https://northoak.co";
 const BUILD_DIR = path.resolve("build/client");
 
 async function findIndexHtml(dir: string): Promise<string[]> {
