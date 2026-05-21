@@ -75,16 +75,9 @@ const BookingForm = ({ className = "" }: BookingFormProps) => {
     setIsSubmitting(true);
 
     try {
-      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL?.replace(/\s/g, "");
-      const supabaseKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY?.replace(/\s/g, "");
-
-      const response = await fetch(`${supabaseUrl}/functions/v1/send-contact-form`, {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${supabaseKey}`,
-          "apikey": supabaseKey,
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
           company,

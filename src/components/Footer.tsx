@@ -42,10 +42,10 @@ const Footer = () => {
             </motion.div>
             
             <a
-              href="mailto:info@northoak.co"
+              href="mailto:hello@northoak.co"
               className="text-foreground hover:text-sage transition-colors underline block mb-6"
             >
-              info@northoak.co
+              hello@northoak.co
             </a>
 
             <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ const Footer = () => {
         <div className="container mx-auto px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              {currentYear} NorthOak
+              © NorthOak {currentYear}, All Rights Reserved
             </p>
             <div className="flex items-center gap-8">
               <Link 

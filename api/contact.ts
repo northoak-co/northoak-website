@@ -1,13 +1,7 @@
-import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@2.0.0";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { Resend } from "resend";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 interface ContactFormRequest {
   // Required
@@ -40,19 +34,23 @@ const row = (label: string, value: string | undefined | null): string => {
   return `<li><strong>${label}:</strong> ${escapeHtml(value)}</li>`;
 };
 
-const handler = async (req: Request): Promise<Response> => {
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    return res.status(204).end();
+  }
+
+  if (req.method !== "POST") {
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const formData: ContactFormRequest = await req.json();
+    const formData = req.body as ContactFormRequest;
 
-    if (!formData.email || !formData.company) {
-      return new Response(
-        JSON.stringify({ error: "Missing required fields" }),
-        { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } },
-      );
+    if (!formData?.email || !formData?.company) {
+      return res.status(400).json({ error: "Missing required fields" });
     }
 
     const fullName = [formData.firstName, formData.lastName]
@@ -72,7 +70,12 @@ const handler = async (req: Request): Promise<Response> => {
       .join("\n");
 
     const intakeRows = [
-      row("Services", formData.services && formData.services.length > 0 ? formData.services.join(", ") : undefined),
+      row(
+        "Services",
+        formData.services && formData.services.length > 0
+          ? formData.services.join(", ")
+          : undefined,
+      ),
       row("Timeline", formData.timeline),
       row("Team size needed", formData.teamSize),
       row("Outsourcing journey", formData.journey),
@@ -81,9 +84,10 @@ const handler = async (req: Request): Promise<Response> => {
       .filter(Boolean)
       .join("\n");
 
-    const notesBlock = formData.notes && formData.notes.trim()
-      ? `<h2>Additional Notes</h2><p>${escapeHtml(formData.notes).replace(/\n/g, "<br>")}</p>`
-      : "";
+    const notesBlock =
+      formData.notes && formData.notes.trim()
+        ? `<h2>Additional Notes</h2><p>${escapeHtml(formData.notes).replace(/\n/g, "<br>")}</p>`
+        : "";
 
     const emailHtml = `
       <h1>New Contact Form Submission</h1>
@@ -113,17 +117,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Email sent successfully:", emailResponse);
 
-    return new Response(JSON.stringify({ success: true, data: emailResponse }), {
-      status: 200,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    return res.status(200).json({ success: true });
   } catch (error: any) {
-    console.error("Error in send-contact-form function:", error);
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: { "Content-Type": "application/json", ...corsHeaders },
-    });
+    console.error("Error in /api/contact:", error);
+    return res.status(500).json({ error: error?.message ?? "Internal error" });
   }
-};
-
-serve(handler);
+}

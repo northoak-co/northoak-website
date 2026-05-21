@@ -312,7 +312,7 @@ const Hero = () => {
               duration: 0.6,
               delay: 0.2
             }} className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12">
-                Quickly and seamlessly scale your team with agile, highly customizable solutions that power your growth.
+                Quickly and seamlessly scale your team with a talent system specifically designed for high-growth teams.
               </motion.p>
             </div>
           </div>
@@ -373,7 +373,7 @@ const Hero = () => {
           }} className="flex justify-center">
               <Link to="/get-started">
                 <button className="group flex items-center bg-sage hover:bg-sage-dark transition-colors duration-200 rounded-full overflow-hidden">
-                  <span className="px-6 py-3 text-white font-medium">Speak With an Expert</span>
+                  <span className="px-6 py-3 text-white font-medium">Build Your Dream Team</span>
                   <span className="flex items-center justify-center w-10 h-10 m-1.5 bg-white rounded-full">
                     <ArrowRight className="w-4 h-4 text-sage" />
                   </span>

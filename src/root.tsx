@@ -28,7 +28,7 @@ const ORGANIZATION_SCHEMA = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "sales",
-    email: "info@northoak.co",
+    email: "hello@northoak.co",
     availableLanguage: "en",
   },
 };
