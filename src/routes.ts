@@ -24,7 +24,6 @@ export default [
   route("roles/finance-accounting", "pages/roles/FinanceAccounting.tsx"),
   route("roles/back-office-admin", "pages/roles/BackOfficeAdmin.tsx"),
 
-<<<<<<< HEAD
   // Individual role pages — Sales & GTM
   route("roles/sdr", "pages/roles/SDR.tsx"),
   route("roles/crm-manager", "pages/roles/CRMManager.tsx"),
