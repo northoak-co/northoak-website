@@ -1,10 +1,24 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Check, LucideIcon } from "lucide-react";
+import { ArrowRight, Check, Clock, LucideIcon } from "lucide-react";
 import { Link } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import Partners from "./Partners";
 import CTASection from "./CTASection";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 interface RolePageLayoutProps {
   icon: LucideIcon;
@@ -20,6 +34,18 @@ interface RolePageLayoutProps {
     value: string;
     label: string;
   }[];
+  tldr: string;
+  tools: string[];
+  costRows: {
+    label: string;
+    domestic: string;
+    northoak: string;
+  }[];
+  timeToHire: string;
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
 }
 
 const RolePageLayout = ({
@@ -30,6 +56,11 @@ const RolePageLayout = ({
   benefits,
   tasks,
   stats,
+  tldr,
+  tools,
+  costRows,
+  timeToHire,
+  faqs,
 }: RolePageLayoutProps) => {
   return (
     <div className="min-h-screen bg-background">
@@ -128,18 +159,47 @@ const RolePageLayout = ({
                       </button>
                     </Link>
                   </motion.div>
+
+                  {/* Guarantee badge */}
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                    className="mt-4 text-sm text-muted-foreground"
+                  >
+                    ✓ Guaranteed service
+                  </motion.p>
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Benefits Section */}
+        {/* TL;DR Section */}
+        <section className="py-6 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto"
+            >
+              <div className="bg-sage/5 border border-sage/20 rounded-2xl p-6 md:p-8">
+                <p className="text-sage font-semibold text-sm uppercase tracking-wide mb-2">
+                  The short answer
+                </p>
+                <p className="text-lg text-foreground leading-relaxed">{tldr}</p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Benefits + Stats Section */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <motion.div
-                initial={{ opacity: 0, x: -30 }}
+                initial={{ x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
@@ -156,7 +216,7 @@ const RolePageLayout = ({
                   {benefits.map((benefit, index) => (
                     <motion.li
                       key={index}
-                      initial={{ opacity: 0, x: -20 }}
+                      initial={{ x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.1 }}
@@ -173,7 +233,7 @@ const RolePageLayout = ({
 
               {/* Stats */}
               <motion.div
-                initial={{ opacity: 0, x: 30 }}
+                initial={{ x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
@@ -182,7 +242,7 @@ const RolePageLayout = ({
                 {stats.map((stat, index) => (
                   <motion.div
                     key={index}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
@@ -205,7 +265,7 @@ const RolePageLayout = ({
         <section className="py-16 md:py-24 bg-card">
           <div className="container mx-auto px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="text-center mb-12"
@@ -223,7 +283,7 @@ const RolePageLayout = ({
               {tasks.map((task, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
@@ -238,6 +298,152 @@ const RolePageLayout = ({
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Tools Section */}
+        <section className="py-16 md:py-20 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-10"
+            >
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Tools they're proficient in
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-wrap gap-3 justify-center"
+            >
+              {tools.map((tool, index) => (
+                <span
+                  key={index}
+                  className="px-4 py-2 bg-card border border-border rounded-full text-sm font-medium text-foreground hover:border-sage/40 transition-colors"
+                >
+                  {tool}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Cost Comparison Section */}
+        <section className="py-16 md:py-20 bg-card">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-10"
+            >
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Cost of a {title.toLowerCase()} specialist: domestic vs NorthOak
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-2xl mx-auto"
+            >
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-sage/5">
+                    <TableHead className="font-semibold text-foreground">
+                      &nbsp;
+                    </TableHead>
+                    <TableHead className="font-semibold text-foreground">
+                      US Domestic Hire
+                    </TableHead>
+                    <TableHead className="font-semibold text-foreground">
+                      NorthOak
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {costRows.map((row, index) => (
+                    <TableRow key={index}>
+                      <TableCell className="font-medium text-foreground">
+                        {row.label}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {row.domestic}
+                      </TableCell>
+                      <TableCell className="text-sage font-semibold">
+                        {row.northoak}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              <p className="text-sm text-muted-foreground mt-4 text-center">
+                US figures reflect fully-loaded cost: salary, benefits, payroll
+                taxes, and recruiting. NorthOak rate is all-inclusive.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Time-to-Hire Banner */}
+        <section className="py-10 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-lg mx-auto"
+            >
+              <div className="bg-sage/5 border border-sage/20 rounded-2xl p-6 text-center">
+                <Clock className="w-10 h-10 text-sage mb-3 mx-auto" />
+                <h3 className="font-display text-xl font-bold text-foreground mb-2">
+                  From intake to first day: {timeToHire}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  Tell us what you need. We'll introduce matched candidates
+                  within 2 business days.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
+                Frequently asked questions
+              </h2>
+            </motion.div>
+            <motion.div
+              initial={{ y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-2xl mx-auto"
+            >
+              <Accordion type="single" collapsible className="space-y-3">
+                {faqs.map((faq, index) => (
+                  <AccordionItem key={index} value={`faq-${index}`}>
+                    <AccordionTrigger className="text-left font-medium">
+                      {faq.question}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </motion.div>
           </div>
         </section>
 

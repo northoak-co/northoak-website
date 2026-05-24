@@ -25,7 +25,7 @@ const Stats = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.span
-            initial={{ opacity: 0 }}
+            initial={{ }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-sage font-medium text-sm tracking-wide uppercase mb-4 block"
@@ -33,7 +33,7 @@ const Stats = () => {
             Our Statistics
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -48,7 +48,7 @@ const Stats = () => {
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}

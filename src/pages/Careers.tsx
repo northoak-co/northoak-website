@@ -245,7 +245,7 @@ const Careers = () => {
       <section className="py-20 px-6 md:px-10 bg-background">
         <div className="max-w-4xl mx-auto text-center">
           <motion.span
-            initial={{ opacity: 0 }}
+            initial={{ }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-sage font-medium text-sm tracking-wide uppercase mb-4 block"
@@ -253,7 +253,7 @@ const Careers = () => {
             About NorthOak
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -262,7 +262,7 @@ const Careers = () => {
             Operational Expertise, Delivered
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -281,7 +281,7 @@ const Careers = () => {
       <section className="py-8 bg-background">
         <div className="mx-auto px-3 md:px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative rounded-3xl md:rounded-[2.5rem] border border-sage/25 overflow-hidden"
@@ -313,7 +313,7 @@ const Careers = () => {
             <div className="relative z-10 py-16 md:py-20 px-6 md:px-12 lg:px-20">
               <div className="max-w-6xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="text-center mb-12"
@@ -334,7 +334,7 @@ const Careers = () => {
                   {coreValues.map((value, index) => (
                     <motion.div
                       key={value.title}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -370,7 +370,7 @@ const Careers = () => {
       <section className="py-20 px-6 md:px-10 bg-background">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-12"
@@ -386,7 +386,7 @@ const Careers = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             {/* Who We Are */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
@@ -401,7 +401,7 @@ const Careers = () => {
                 {whoWeAre.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
@@ -425,7 +425,7 @@ const Careers = () => {
 
             {/* How We Work */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
@@ -440,7 +440,7 @@ const Careers = () => {
                 {howWeWork.map((item, index) => (
                   <motion.div
                     key={item.title}
-                    initial={{ opacity: 0, x: 10 }}
+                    initial={{ x: 10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
@@ -469,7 +469,7 @@ const Careers = () => {
       <section className="py-8 bg-background">
         <div className="mx-auto px-3 md:px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative rounded-3xl md:rounded-[2.5rem] border border-sage/25 overflow-hidden"
@@ -501,7 +501,7 @@ const Careers = () => {
             <div className="relative z-10 py-16 md:py-20 px-6 md:px-12 lg:px-20">
               <div className="max-w-6xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="text-center mb-12"
@@ -522,7 +522,7 @@ const Careers = () => {
                   {benefits.map((benefit, index) => (
                     <motion.div
                       key={benefit.title}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: index * 0.08 }}
@@ -553,7 +553,7 @@ const Careers = () => {
       <section className="py-20 px-6 md:px-10 bg-background overflow-hidden">
         <div className="max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-8"
@@ -582,7 +582,7 @@ const Careers = () => {
       >
         <div className="mx-auto px-3 md:px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative rounded-3xl md:rounded-[2.5rem] border border-sage/25 overflow-hidden"
@@ -607,7 +607,7 @@ const Careers = () => {
             <div className="relative z-10 py-16 md:py-20 px-6 md:px-12 lg:px-20">
               <div className="max-w-4xl mx-auto">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   className="text-center mb-12"
@@ -626,7 +626,7 @@ const Careers = () => {
                 </motion.div>
 
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.2 }}
@@ -662,7 +662,7 @@ const Careers = () => {
       <section className="py-20 px-6 md:px-10 bg-background">
         <div className="max-w-4xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="relative rounded-3xl md:rounded-[2.5rem] border border-sage/25 overflow-hidden p-8 md:p-12 lg:p-16 text-center"

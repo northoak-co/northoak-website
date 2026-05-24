@@ -151,41 +151,26 @@ Highest-leverage technical work. Unlocks everything in P1.
 
 Build the bottom-of-funnel pages. Commercial-intent content drives almost all qualified traffic in this category; informational top-of-funnel converts at 0.1–0.5% vs ~7% for comparison/alternatives content (CXL, First Page Sage benchmarks).
 
-- [ ] **Deepen each role page from ~150 to ~600–900 words**, structured for AI citation:
-  - TL;DR answer in the first 60 words (front-loading captures 44% of LLM citations per Profound's analysis)
-  - "What a [role] does day-to-day" — bulleted task list
-  - "Tools they're proficient in" (HubSpot, Salesforce, QuickBooks, Zendesk, Gorgias, etc. — searched terms)
-  - **Cost section** — comparison table "Domestic [role] vs NorthOak" (tables get 4.2× more LLM citations than prose)
-  - "How fast you can hire" timeline
-  - 5–6 role-specific FAQs at the bottom
-  - Roles to update: CRM Management, Customer Support, HR Admin, Virtual Assistant, Finance & Accounting, Back Office Admin
-- [ ] **Three comparison pages** (highest-cited content type per Profound's data — ~32.5% of AI citations)
-  - [ ] `/vs/upwork-fiverr` — vetting, replacement, account management, payroll/compliance
-  - [ ] `/vs/domestic-hire` — loaded cost, time-to-hire, flexibility (embeds the calculator from #11)
-  - [ ] `/vs/traditional-bpo` — dedicated vs pooled, no minimums, smaller team
-  - Each page: comparison table, FAQ section, `FAQPage` JSON-LD
-  - Skip `vs Belay/Athena/Time Etc` for now — small sites don't win branded competitor SEO
-- [ ] **Homepage FAQ section, 8–10 questions** wrapped with `FAQPage` JSON-LD
-  - What is NorthOak?
-  - How does NorthOak differ from Upwork/Fiverr/freelancers?
-  - Where are NorthOak specialists based?
-  - How fast can I hire?
-  - What does it cost?
-  - Who owns the work / IP?
-  - How are specialists vetted?
-  - What time zones do you cover?
-  - How do contracts and termination work?
-  - What roles do you not staff?
+- [x] **Deepen each role page from ~150 to ~600–900 words**, structured for AI citation *(2026-05-08)*
+  - TL;DR answer in the first 60 words — added as "The short answer" boxed section on every role page
+  - "Tools they're proficient in" pills section (HubSpot, Salesforce, QuickBooks, Zendesk, Gorgias, etc.)
+  - **Cost section** — comparison table "Domestic [role] vs NorthOak" with 5-row breakdown
+  - "From intake to first day: 5 business days" — time-to-hire banner with Clock icon
+  - 5 role-specific FAQs per page with `FAQPage` JSON-LD via `faqSchema` in meta export
+  - All 6 roles updated: CRM Management, Customer Support, HR Admin, Virtual Assistant, Finance & Accounting, Back Office Admin
+- [x] **Three comparison pages** *(2026-05-08)*
+  - [x] `/vs/upwork-fiverr` — 8-row comparison table, 3 differentiator cards, FAQ with `FAQPage` JSON-LD
+  - [x] `/vs/domestic-hire` — live calculator (salary → fully-loaded monthly cost vs $2,000/mo NorthOak), "Beyond the numbers" table, FAQ
+  - [x] `/vs/traditional-bpo` — dedicated vs pooled table, no-minimums messaging, FAQ
+- [x] **Homepage FAQ section, 10 questions** wrapped with `FAQPage` JSON-LD *(2026-05-08)*
+  - Rendered via `HomeFAQ` component with shadcn Accordion; `faqSchema` added to `Index.tsx` meta export
 - [ ] **Three named, attributed testimonials on homepage** with role + company. We have 20 logos and zero quotes — easiest trust unlock available.
-- [ ] **One calculator: "Loaded cost of a US hire vs NorthOak"**
-  - Inputs: role + base salary
-  - Output: fully-loaded domestic cost (benefits, taxes, PTO, equipment, recruiting cost) vs NorthOak monthly fee
-  - Live on `/vs/domestic-hire`
-  - Almost no competitor in this category has built this well
+- [x] **One calculator: "Loaded cost of a US hire vs NorthOak"** *(2026-05-08)*
+  - Live on `/vs/domestic-hire` — inputs annual base salary, outputs 7 line items + sage savings callout
 - [ ] **`/about` page** with founder names, photos, bios, LinkedIn links, where specialists are based, year founded. AI engines need an entity to attribute claims to. *(Parity item; also delivers on the differentiator pick if we lean into a founder-origin story like GrowthAssistant's Jesse Pujji / Ampush angle.)*
-- [ ] **`/security` page** — SOC 2 status (current or roadmap), NDA/IP assignment language, data handling, device policy. Sales-cycle gate for mid-market deals. *(Differentiator opportunity — only SupportNinja has compliance badges across the four competitors.)*
-- [ ] **`/how-it-works` page** *(parity gap surfaced by competitive review)* — 3-step process (intake → vetted match → embedded specialist), visualized vetting funnel ("top X% of applicants accepted"), match SLA (days to first interview), replacement guarantee. Every credible competitor has this page; NorthOak does not.
-- [ ] **Guarantee statement on home + every role page** *(parity gap)* — visible above the fold somewhere. GrowthAssistant: *"If it's not a fit, we go back to work. Free, every time."* Magic: *"$0 until you hire."* Athena: replacement support. NorthOak needs its own one-line version. Drives conversion + closes a credibility gap that's free to fix.
+- [x] **`/security` page** *(2026-05-08)* — NDA/IP assignment, scoped access, device policy, data handling, SOC 2 status note (in-progress language). FAQ with `FAQPage` JSON-LD.
+- [x] **`/how-it-works` page** *(2026-05-08)* — 3-step process (intake → vetted match → embedded specialist), 4-stage vetting funnel, 5-day match SLA + replacement guarantee cards, FAQ with `FAQPage` JSON-LD.
+- [x] **Guarantee statement on home + every role page** *(2026-05-08)* — "✓ Free replacement, no questions asked · Starts at $2,000/mo" added below CTA on homepage hero; guarantee badge in hero section of every role page.
 
 ---
 

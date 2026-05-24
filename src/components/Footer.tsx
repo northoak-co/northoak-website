@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router";
-import logo from "@/assets/logo.png";
+import leaf from "@/assets/leaf.png";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -11,12 +11,20 @@ const Footer = () => {
     { name: "HR Admin", link: "/roles/hr-admin" },
     { name: "Virtual Assistant", link: "/roles/virtual-assistant" },
     { name: "Finance & Accounting", link: "/roles/finance-accounting" },
+    { name: "Back Office Admin", link: "/roles/back-office-admin" },
   ];
 
-
   const company = [
+    { name: "How It Works", link: "/how-it-works" },
     { name: "Pricing", link: "/pricing" },
+    { name: "Security", link: "/security" },
     { name: "Careers", link: "/careers" },
+  ];
+
+  const compare = [
+    { name: "vs Upwork & Fiverr", link: "/vs/upwork-fiverr" },
+    { name: "vs Hiring Domestically", link: "/vs/domestic-hire" },
+    { name: "vs Traditional BPO", link: "/vs/traditional-bpo" },
   ];
 
 
@@ -24,20 +32,19 @@ const Footer = () => {
     <footer className="relative z-10">
       {/* Main Footer Content */}
       <div className="container mx-auto px-6 py-16 bg-background">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Logo & Contact Column */}
           <div className="lg:col-span-2">
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="mb-6"
             >
-              <img 
-                src={logo} 
-                alt="NorthOak" 
-                className="h-8 w-auto object-contain" 
-                style={{ imageRendering: 'auto' }} 
+              <img
+                src={leaf}
+                alt="NorthOak"
+                className="h-32 w-auto object-contain"
               />
             </motion.div>
             
@@ -87,8 +94,25 @@ const Footer = () => {
             <ul className="space-y-3">
               {company.map((item) => (
                 <li key={item.name}>
-                  <Link 
-                    to={item.link} 
+                  <Link
+                    to={item.link}
+                    className="text-muted-foreground hover:text-sage transition-colors text-sm"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Compare Column */}
+          <div>
+            <h4 className="font-semibold text-foreground mb-4">Compare</h4>
+            <ul className="space-y-3">
+              {compare.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.link}
                     className="text-muted-foreground hover:text-sage transition-colors text-sm"
                   >
                     {item.name}

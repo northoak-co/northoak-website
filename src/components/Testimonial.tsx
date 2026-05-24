@@ -33,7 +33,7 @@ const Testimonial = () => {
         <motion.div
           ref={containerRef}
           onMouseMove={handleMouseMove}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -66,7 +66,7 @@ const Testimonial = () => {
           <div className="relative z-10 py-16 md:py-24 px-6 md:px-12 lg:px-20">
             <div className="max-w-4xl mx-auto text-center">
               <motion.span
-                initial={{ opacity: 0 }}
+                initial={{ }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 className="text-sage font-medium text-sm tracking-wide uppercase mb-8 block"
@@ -75,7 +75,7 @@ const Testimonial = () => {
               </motion.span>
               
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 className="relative"

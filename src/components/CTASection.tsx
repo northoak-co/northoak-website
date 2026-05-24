@@ -34,7 +34,7 @@ const CTASection = () => {
         <motion.div
           ref={containerRef}
           onMouseMove={handleMouseMove}
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -70,7 +70,7 @@ const CTASection = () => {
               <div className="text-center lg:text-left">
                 {/* Badges */}
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.1 }}
@@ -87,7 +87,7 @@ const CTASection = () => {
 
                 {/* Headline */}
                 <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -98,7 +98,7 @@ const CTASection = () => {
 
                 {/* Subtext */}
                 <motion.p
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
@@ -110,7 +110,7 @@ const CTASection = () => {
 
               {/* Right Side - Form Card */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.3 }}

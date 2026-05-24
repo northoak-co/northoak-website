@@ -1,53 +1,146 @@
-import { motion } from "framer-motion";
-import { 
-  Users, 
-  HeadphonesIcon, 
-  ClipboardList, 
-  Cog, 
-  PiggyBank, 
-  FileText 
-} from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, ArrowUpRight } from "lucide-react";
 import { Link } from "react-router";
 import logo from "@/assets/logo.png";
+import { services, type Service } from "@/data/taxonomy";
 
-const services = [
-  {
-    icon: Users,
-    title: "CRM Management",
-    description: "Keep your customer information up-to-date and manage ongoing sales/marketing workflows.",
-    href: "/roles/crm-management",
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "Customer Support",
-    description: "Provide excellent service over email, chat, and phone at every step in the customer journey.",
-    href: "/roles/customer-support",
-  },
-  {
-    icon: ClipboardList,
-    title: "HR Admin",
-    description: "Streamline your HR workflows with expert payroll, recruitment, and IT services.",
-    href: "/roles/hr-admin",
-  },
-  {
-    icon: Cog,
-    title: "Virtual Assistant",
-    description: "Supercharge your daily to-dos, scheduling, inbox review, follow ups, and much more.",
-    href: "/roles/virtual-assistant",
-  },
-  {
-    icon: PiggyBank,
-    title: "Finance & Accounting",
-    description: "Feel confident in your financial operations with expert bookkeeping and accounting services.",
-    href: "/roles/finance-accounting",
-  },
-  {
-    icon: FileText,
-    title: "Back Office Admin",
-    description: "Have other manual workflows and processes unique to your business? We'll do it for you!",
-    href: "/roles/back-office-admin",
-  },
-];
+const ServiceCard = ({ service, index }: { service: Service; index: number }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const Icon = service.icon;
+
+  return (
+    <motion.div
+      initial={{ y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.07, duration: 0.4 }}
+      className={`relative group overflow-hidden rounded-2xl transition-all duration-300 ${
+        isOpen
+          ? "bg-sage/[0.04] border border-sage/30 shadow-md"
+          : "bg-card border border-border hover:border-sage/40 hover:shadow-sm"
+      }`}
+    >
+      {/* Top accent bar */}
+      <div
+        className={`absolute top-0 left-0 right-0 h-[3px] transition-opacity duration-300 ${
+          isOpen ? "opacity-100" : "opacity-0 group-hover:opacity-60"
+        }`}
+        style={{
+          background:
+            "linear-gradient(90deg, hsl(var(--sage)) 0%, hsl(var(--sage) / 0.3) 100%)",
+        }}
+      />
+
+      {/* Left accent strip */}
+      <div
+        className={`absolute left-0 top-[3px] bottom-0 w-[2px] transition-all duration-300 rounded-b-full ${
+          isOpen ? "bg-sage/50" : "bg-transparent group-hover:bg-sage/20"
+        }`}
+      />
+
+      <div className="relative p-6">
+        {/* Icon */}
+        <div
+          className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-colors duration-300 ${
+            isOpen
+              ? "bg-sage text-white"
+              : "bg-sage-light text-sage group-hover:bg-sage group-hover:text-white"
+          }`}
+        >
+          <Icon className="w-5 h-5" />
+        </div>
+
+        {/* Title */}
+        <h3 className="font-sans text-lg font-semibold text-foreground mb-2">
+          {service.name}
+        </h3>
+
+        {/* Description */}
+        <p className="text-muted-foreground text-sm leading-relaxed mb-5">
+          {service.shortDescription}
+        </p>
+
+        {/* Divider + toggle */}
+        <div className="border-t border-border/60 pt-4">
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center justify-between w-full text-sm font-medium transition-colors group/btn"
+          >
+            <span
+              className={`transition-colors duration-200 ${
+                isOpen
+                  ? "text-sage"
+                  : "text-muted-foreground group-hover/btn:text-foreground"
+              }`}
+            >
+              {isOpen ? `Hide roles (${service.roles.length})` : `View roles (${service.roles.length})`}
+            </span>
+            <motion.div
+              animate={{ rotate: isOpen ? 180 : 0 }}
+              transition={{ duration: 0.22, ease: "easeInOut" }}
+            >
+              <ChevronDown
+                className={`w-4 h-4 transition-colors duration-200 ${
+                  isOpen
+                    ? "text-sage"
+                    : "text-muted-foreground group-hover/btn:text-foreground"
+                }`}
+              />
+            </motion.div>
+          </button>
+        </div>
+
+        {/* Expanding role pills */}
+        <AnimatePresence initial={false}>
+          {isOpen && (
+            <motion.div
+              key="roles"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+              className="overflow-hidden"
+            >
+              <div className="pt-4 flex flex-wrap gap-2">
+                {service.roles.map((role, i) => (
+                  <motion.div
+                    key={role.slug}
+                    initial={{ opacity: 0, scale: 0.88 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: i * 0.04, duration: 0.18 }}
+                  >
+                    <Link
+                      to={`/roles/${role.slug}`}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 bg-sage-light text-sage text-xs font-medium rounded-full border border-sage/20 hover:bg-sage hover:text-white hover:border-sage transition-all duration-200"
+                    >
+                      {role.name}
+                      <ArrowUpRight className="w-2.5 h-2.5 opacity-50" />
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: service.roles.length * 0.04 + 0.05 }}
+              >
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-sage hover:text-sage-dark transition-colors"
+                >
+                  View {service.name} overview
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </Link>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  );
+};
 
 const Services = () => {
   return (
@@ -55,7 +148,7 @@ const Services = () => {
       <div className="container mx-auto px-6">
         {/* Team + NorthOak Pills */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
@@ -73,7 +166,7 @@ const Services = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -82,39 +175,20 @@ const Services = () => {
             Unblocking bottlenecks so you can focus on growth
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-muted-foreground max-w-2xl mx-auto"
           >
-            Never let operations be the reason you stop growing. Whether you're facing a spike in demand or your team has too much on their plates, rely on NorthOak.
+            We build you a team in your budget, with the best talent across the world.
           </motion.p>
         </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {services.map((service, index) => (
-            <Link key={service.title} to={service.href}>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="group p-6 bg-card rounded-2xl border border-border hover:border-sage/50 hover:shadow-hover transition-all duration-300 h-full cursor-pointer"
-              >
-                <div className="w-12 h-12 bg-sage-light rounded-xl flex items-center justify-center mb-5 group-hover:bg-sage transition-colors duration-300">
-                  <service.icon className="w-6 h-6 text-sage group-hover:text-primary-foreground transition-colors duration-300" />
-                </div>
-                <h3 className="font-sans text-lg font-semibold text-foreground mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {service.description}
-                </p>
-              </motion.div>
-            </Link>
+            <ServiceCard key={service.slug} service={service} index={index} />
           ))}
         </div>
       </div>

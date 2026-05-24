@@ -37,7 +37,7 @@ const Process = () => {
         {/* Section Header */}
         <div className="text-center mb-20">
           <motion.span
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-block text-sage font-semibold text-sm tracking-widest uppercase mb-4 px-4 py-2 bg-sage/10 rounded-full"
@@ -45,7 +45,7 @@ const Process = () => {
             How it Works
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -55,7 +55,7 @@ const Process = () => {
             <span className="text-sage">operational excellence</span>
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
@@ -64,7 +64,7 @@ const Process = () => {
             A simple, proven process to transform your operations and scale your business efficiently.
           </motion.p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -88,7 +88,7 @@ const Process = () => {
             {steps.map((step, index) => (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ 
@@ -131,7 +131,7 @@ const Process = () => {
                   {index < steps.length - 1 && (
                     <div className="hidden md:flex absolute -right-8 lg:-right-10 top-1/2 -translate-y-1/2 z-10">
                       <motion.div
-                        initial={{ opacity: 0, x: -10 }}
+                        initial={{ x: -10 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.2 + 0.3 }}
@@ -152,7 +152,7 @@ const Process = () => {
 
         {/* Bottom CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}

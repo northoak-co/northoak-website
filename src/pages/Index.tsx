@@ -4,9 +4,21 @@ import Services from "@/components/Services";
 import About from "@/components/About";
 import Process from "@/components/Process";
 import Testimonial from "@/components/Testimonial";
+import HomeFAQ, { faqs } from "@/components/HomeFAQ";
 import Partners from "@/components/Partners";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import { pageMeta, faqSchema } from "@/lib/seo";
+
+export const meta = () => [
+  ...pageMeta({
+    title: "NorthOak | Operations Outsourcing for High-Growth Teams",
+    description:
+      "Vetted remote specialists for CRM, customer support, HR admin, virtual assistance, finance, and back-office operations. Starts at $2,000/mo. Guaranteed service.",
+    path: "/",
+  }),
+  faqSchema(faqs),
+];
 
 const Index = () => {
   return (
@@ -25,6 +37,7 @@ const Index = () => {
         <About />
         <Process />
         <Testimonial />
+        <HomeFAQ />
         <Partners />
         <CTASection />
       </main>

@@ -300,7 +300,7 @@ const Pricing = () => {
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div className="mx-auto px-3 md:px-4">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -332,7 +332,7 @@ const Pricing = () => {
 
               <div className="relative z-10 px-6 md:px-12 lg:px-20 py-16 md:py-24">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
@@ -350,7 +350,7 @@ const Pricing = () => {
                   {includedFeatures.map((feature, index) => (
                     <motion.div
                       key={feature.title}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05, duration: 0.5 }}
@@ -377,7 +377,7 @@ const Pricing = () => {
         <section className="py-16 md:py-20">
           <div className="container mx-auto px-6">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
@@ -398,7 +398,7 @@ const Pricing = () => {
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div className="mx-auto px-3 md:px-4">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
@@ -430,7 +430,7 @@ const Pricing = () => {
 
               <div className="relative z-10 px-6 md:px-12 lg:px-20 py-16 md:py-24">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
@@ -457,16 +457,16 @@ const Pricing = () => {
                     },
                     {
                       q: "Is there a minimum commitment period?",
-                      a: "We require a 3-month minimum commitment for monthly tiers to ensure both you and your team member have enough time to build a productive working relationship.",
+                      a: "No. Our contracts are month-to-month — no 12-month lock-ins, no volume minimums. Scale up or down with notice.",
                     },
                     {
                       q: "How quickly can I get started?",
-                      a: "Most clients are matched with their new team member within 1-2 weeks. We prioritize finding the right fit over speed, but we move fast once we identify the perfect candidate.",
+                      a: "From your intake call to your specialist's first day: 5 business days. We introduce vetted candidates within 2 business days and move fast without cutting corners.",
                     },
                   ].map((faq, index) => (
                     <motion.div
                       key={index}
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{ y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: index * 0.05, duration: 0.3 }}

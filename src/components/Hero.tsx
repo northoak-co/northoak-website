@@ -1,6 +1,6 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router";
 
 // Import character images
@@ -178,6 +178,27 @@ const solutions = [{
 const Hero = () => {
   const rotatingWords = ["customer service", "finance & accounting", "payroll admin", "social media management", "video editing", "back office admin"];
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Mouse position tracking
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  // Smooth spring animations for mouse following
+  const springConfig = {
+    damping: 25,
+    stiffness: 150
+  };
+  const smoothMouseX = useSpring(mouseX, springConfig);
+  const smoothMouseY = useSpring(mouseY, springConfig);
+
+  // Transform mouse position to movement ranges for orbs
+  const orb1X = useTransform(smoothMouseX, [0, 1], [-30, 30]);
+  const orb1Y = useTransform(smoothMouseY, [0, 1], [-30, 30]);
+  const orb2X = useTransform(smoothMouseX, [0, 1], [20, -20]);
+  const orb2Y = useTransform(smoothMouseY, [0, 1], [25, -25]);
+  const orb3X = useTransform(smoothMouseX, [0, 1], [-15, 15]);
+  const orb3Y = useTransform(smoothMouseY, [0, 1], [-20, 20]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -185,10 +206,18 @@ const Hero = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
   return <section className="relative bg-background pt-4 pb-8 overflow-hidden">
       {/* Soft Hero Box */}
       <div className="mx-auto px-3 md:px-4 relative z-10">
-        <motion.div initial={{
+        <motion.div ref={containerRef} onMouseMove={handleMouseMove} initial={{
         opacity: 0,
         y: 20
       }} animate={{
@@ -200,6 +229,42 @@ const Hero = () => {
         background: "linear-gradient(180deg, hsl(102 35% 92%) 0%, hsl(102 25% 94%) 40%, hsl(102 20% 95%) 100%)",
         boxShadow: "0 4px 40px -12px hsl(var(--sage) / 0.2), inset 0 1px 0 0 hsl(var(--sage) / 0.15)"
       }}>
+          {/* Animated Background Orbs */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {/* Large primary orb - top right */}
+            <motion.div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl" style={{
+            background: "radial-gradient(circle, hsl(102 44% 51% / 0.3) 0%, transparent 70%)",
+            x: orb1X,
+            y: orb1Y
+          }} />
+
+            {/* Secondary orb - bottom left */}
+            <motion.div className="absolute -bottom-48 -left-32 w-[700px] h-[700px] rounded-full blur-3xl" style={{
+            background: "radial-gradient(circle, hsl(102 40% 55% / 0.25) 0%, transparent 70%)",
+            x: orb2X,
+            y: orb2Y
+          }} />
+
+            {/* Center accent orb */}
+            <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl" style={{
+            background: "radial-gradient(circle, hsl(102 35% 60% / 0.18) 0%, transparent 60%)",
+            x: orb3X,
+            y: orb3Y
+          }} />
+
+            {/* Subtle floating particles */}
+            <motion.div className="absolute top-1/4 right-1/4 w-48 h-48 rounded-full blur-2xl" style={{
+            background: "hsl(102 44% 51% / 0.2)",
+            x: useTransform(smoothMouseX, [0, 1], [10, -10]),
+            y: useTransform(smoothMouseY, [0, 1], [15, -15])
+          }} />
+            <motion.div className="absolute bottom-1/3 left-1/3 w-40 h-40 rounded-full blur-2xl" style={{
+            background: "hsl(102 44% 51% / 0.15)",
+            x: useTransform(smoothMouseX, [0, 1], [-8, 8]),
+            y: useTransform(smoothMouseY, [0, 1], [-12, 12])
+          }} />
+          </div>
+
           <div className="relative z-10 px-6 md:px-12 lg:px-20 pt-40 md:pt-52 pb-16 py-[150px] md:pb-0">
             <div className="max-w-4xl mx-auto text-center pt-12 md:pt-16 py-0">
               {/* Main Headline */}

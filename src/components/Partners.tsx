@@ -26,7 +26,7 @@ const Partners = () => {
         {/* Section Header */}
         <div className="text-center mb-12">
           <motion.span
-            initial={{ opacity: 0 }}
+            initial={{ }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="text-sage font-medium text-sm tracking-wide uppercase mb-4 block"
@@ -34,7 +34,7 @@ const Partners = () => {
             Our Partners
           </motion.span>
           <motion.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
@@ -43,7 +43,7 @@ const Partners = () => {
             Work with the best
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -55,7 +55,7 @@ const Partners = () => {
 
         {/* Logo Grid */}
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
@@ -64,7 +64,7 @@ const Partners = () => {
           {partners.map((partner, index) => (
             <motion.div
               key={partner.name}
-              initial={{ opacity: 0, scale: 0.8 }}
+              initial={{ scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 * index }}
