@@ -9,10 +9,14 @@ import {
   FileText,
   Rocket,
   BadgeCheck,
-  Phone,
   UserCheck,
   Award,
   ChevronRight,
+  Target,
+  MessageSquare,
+  BarChart3,
+  CalendarCheck,
+  Lightbulb,
 } from "lucide-react";
 import { Link } from "react-router";
 import Header from "@/components/Header";
@@ -28,24 +32,24 @@ import { pageMeta, faqSchema } from "@/lib/seo";
 
 const faqs = [
   {
-    question: "What does the intake process look like?",
+    question: "What does the outcome-mapping process look like?",
     answer:
-      "A 30-minute call with your account manager. We cover the role scope, tools, time zone requirements, and what you'd want your specialist to accomplish in their first 90 days. You'll have matched candidates within 2 business days.",
+      "Your intake call isn't a scope review — it's a structured conversation about goals. We ask what success looks like at 30 days and 90 days, what's gone wrong with outsourcing before, and what you care about most. Everything is documented before work begins so there are no surprises.",
   },
   {
-    question: "How long does onboarding take?",
+    question: "What happens during the first month?",
     answer:
-      "Most specialists are independently productive within 5–7 days. The first week includes SOP documentation, tool onboarding, and shadowing. We handle the onboarding process — you just provide access and context.",
+      "We run a four-week structured ramp. Week 1 is learning and absorbing, with daily check-ins and full process documentation built alongside your account manager. Week 2 is supervised execution. Weeks 3–4 are stabilization. We don't call an engagement fully onboarded until a 10-point checklist is complete.",
   },
   {
-    question: "What if I need to scale up or down?",
+    question: "How do you stay hands-on after onboarding?",
     answer:
-      "Month-to-month contracts mean you can add specialists as you grow or reduce scope with notice. There are no minimums and no penalties.",
+      "Your specialist sends EOD updates daily and you have a weekly check-in with your account manager. Monthly performance reviews give you a chance to formally score the engagement. Your specialist also logs continuous improvement suggestions every week — the relevant ones get shared at each monthly review.",
   },
   {
-    question: "Do you handle payroll and compliance?",
+    question: "What if something isn't working?",
     answer:
-      "Yes — fully. Your specialist's payroll, taxes, and compliance are our responsibility. You pay one monthly invoice.",
+      "We catch most issues before you raise them. Your account manager reviews agent work daily during the first month, and we have an internal escalation process for addressing problems early. If the match isn't right at any point, we find a replacement at no additional cost.",
   },
 ];
 
@@ -53,39 +57,39 @@ export const meta = () => [
   ...pageMeta({
     title: "How It Works | NorthOak",
     description:
-      "From intake to embedded specialist in 5 business days. See NorthOak's 3-step process, vetting funnel, match SLA, and free replacement guarantee.",
+      "NorthOak stays hands-on from intake through ongoing management — with outcome mapping, a four-week structured ramp, daily oversight, and monthly performance reviews.",
     path: "/how-it-works",
   }),
   faqSchema(faqs),
 ];
 
 const kpis = [
-  { number: "5 days", label: "Intake to first day" },
-  { number: "< 5%", label: "Of applicants accepted" },
-  { number: "5–7 days", label: "To full productivity" },
-  { number: "1 invoice", label: "All-in, no hidden fees" },
+  { number: "30 days", label: "Structured ramp period" },
+  { number: "< 5%", label: "Of applicants placed" },
+  { number: "10 min", label: "Response acknowledgment" },
+  { number: "Daily", label: "EOD updates, every day" },
 ];
 
 const processSteps = [
   {
     number: "01",
-    phase: "Discovery",
-    title: "Tell us what you need",
+    phase: "Outcome Mapping",
+    title: "We start with your goals, not a job description",
     description:
-      "A 30-minute intake call covers the role scope, your tools, time zone requirements, and what success looks like at 90 days. No RFP, no lengthy procurement — just a focused conversation.",
+      "Before we discuss candidates, we map what you actually want to achieve. What does success look like at 30 days and 90? What's failed with outsourcing before? We ask the questions most vendors skip — and document the answers before anyone starts work.",
     deliverables: [
-      "Role scope document",
-      "Candidate profile brief",
-      "SLA commitment letter",
+      "30 & 90-day goal framework",
+      "Role scope + success metrics",
+      "Written expectations confirmed upfront",
     ],
-    icon: Phone,
+    icon: Target,
   },
   {
     number: "02",
     phase: "Matching",
-    title: "Meet your vetted candidates",
+    title: "Meet specialists who've already proven themselves",
     description:
-      "Within 2 business days, we introduce 1–2 pre-vetted candidates who've passed our multi-stage assessment and paid trial task. You interview and choose — we handle everything after.",
+      "Within days, we introduce 1–2 pre-vetted candidates. Fewer than 5% of applicants reach placement — every person you meet has cleared a four-stage process including a paid trial task on real client workflows.",
     deliverables: [
       "1–2 curated candidates",
       "Assessment results + work samples",
@@ -95,16 +99,90 @@ const processSteps = [
   },
   {
     number: "03",
-    phase: "Launch",
-    title: "Your specialist hits the ground running",
+    phase: "Structured Onboarding",
+    title: "A supervised ramp, not a cold start",
     description:
-      "We run structured onboarding — SOP documentation, tool access setup, and a supervised first week. Your specialist is independently productive within 5–7 days.",
+      "Your specialist goes through a dedicated four-week ramp: daily check-ins, supervised task execution, and full process documentation built alongside your account manager. We don't call it done until everything is running smoothly.",
     deliverables: [
-      "Dedicated account manager",
-      "Standing weekly check-in",
-      "Free replacement guarantee",
+      "Dedicated onboarding lead",
+      "Daily EOD updates from day one",
+      "Shared Notion documentation",
     ],
     icon: Rocket,
+  },
+];
+
+const rampPhases = [
+  {
+    week: "Week 1",
+    abbr: "Wk 1",
+    title: "Learning",
+    description:
+      "Your specialist absorbs your tools, processes, and how your business operates. Daily check-ins with your account manager. Questions are encouraged — we use them to build your process documentation from scratch.",
+    cadence: "Daily check-ins",
+  },
+  {
+    week: "Week 2",
+    abbr: "Wk 2",
+    title: "Practicing",
+    description:
+      "Your specialist starts executing tasks under supervision. When mistakes happen, we flag them, fix them, and document what changed. This is when training clicks into place.",
+    cadence: "Every-other-day check-ins",
+  },
+  {
+    week: "Weeks 3–4",
+    abbr: "Wk 3–4",
+    title: "Stabilizing",
+    description:
+      "Your specialist runs core responsibilities independently. Questions taper significantly. All processes are fully documented in Notion by the end of this period.",
+    cadence: "Weekly check-ins",
+  },
+  {
+    week: "End of Month 1",
+    abbr: "Mo 1",
+    title: "Graduation",
+    description:
+      "Before we call you fully onboarded, we run a 10-point checklist covering documentation, reporting cadence, communication setup, and client satisfaction alignment. Performance tracking starts here.",
+    cadence: "10-point checklist",
+  },
+];
+
+const commitments = [
+  {
+    icon: MessageSquare,
+    title: "10-minute response acknowledgment",
+    description:
+      "Every client message is acknowledged within 10 minutes — even if the full answer takes longer. No silence, ever.",
+  },
+  {
+    icon: CalendarCheck,
+    title: "Daily EOD updates",
+    description:
+      "Your specialist sends a daily update: what got done, any blockers, open questions. Sent every business day.",
+  },
+  {
+    icon: Users,
+    title: "Dedicated onboarding lead",
+    description:
+      "Every engagement has a named onboarding lead who coordinates the ramp — not just a generic account manager.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Daily manager QA during month 1",
+    description:
+      "A manager reviews your specialist's work every day during the ramp period. We catch problems before you notice them.",
+  },
+  {
+    icon: BarChart3,
+    title: "Monthly performance reviews",
+    description:
+      "You score the engagement monthly. Anything below threshold triggers a direct conversation — not just a logged number.",
+  },
+  {
+    icon: Lightbulb,
+    title: "Continuous improvement, tracked weekly",
+    description:
+      "Your specialist logs operational suggestions every week. The relevant ones get brought to your monthly review.",
   },
 ];
 
@@ -148,22 +226,34 @@ const comparisonRows: {
   northoak: CompValue;
 }[] = [
   {
-    label: "Time to hire",
-    agency: "4–8 weeks",
-    inhouse: "6–12 weeks",
-    northoak: "5 business days",
-  },
-  {
-    label: "Multi-stage vetting",
+    label: "Outcome mapping upfront",
     agency: false,
     inhouse: false,
     northoak: true,
   },
   {
-    label: "Paid trial task",
+    label: "Structured 4-week ramp",
     agency: false,
     inhouse: false,
     northoak: true,
+  },
+  {
+    label: "Daily EOD updates",
+    agency: false,
+    inhouse: false,
+    northoak: true,
+  },
+  {
+    label: "Multi-stage vetting + trial task",
+    agency: false,
+    inhouse: false,
+    northoak: true,
+  },
+  {
+    label: "Annual team attrition",
+    agency: "25%+ typical",
+    inhouse: "Variable",
+    northoak: "< 5%",
   },
   {
     label: "Payroll & compliance",
@@ -172,13 +262,7 @@ const comparisonRows: {
     northoak: true,
   },
   {
-    label: "Structured onboarding",
-    agency: false,
-    inhouse: false,
-    northoak: true,
-  },
-  {
-    label: "Replacement guarantee",
+    label: "Monthly performance reviews",
     agency: false,
     inhouse: false,
     northoak: true,
@@ -190,7 +274,7 @@ const comparisonRows: {
     northoak: true,
   },
   {
-    label: "Month-to-month contracts",
+    label: "Replacement guarantee",
     agency: false,
     inhouse: false,
     northoak: true,
@@ -244,10 +328,10 @@ const HowItWorks = () => {
                   transition={{ duration: 0.6, delay: 0.1 }}
                   className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-foreground mb-6"
                 >
-                  Intake to{" "}
-                  <span className="text-sage italic">first day.</span>
+                  Outsourcing built{" "}
+                  <span className="text-sage italic">around</span>
                   <br />
-                  Five business days.
+                  your outcomes.
                 </motion.h1>
 
                 <motion.p
@@ -256,9 +340,10 @@ const HowItWorks = () => {
                   transition={{ duration: 0.6, delay: 0.2 }}
                   className="text-lg md:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
                 >
-                  We handle sourcing, vetting, and onboarding. You get a
-                  specialist embedded in your tools, working your hours — not a
-                  contractor, not a temp.
+                  Most vendors place someone and step back. We stay in it — with
+                  a dedicated onboarding lead, four-week structured ramp, daily
+                  oversight, and monthly performance reviews — until your goals
+                  are being met.
                 </motion.p>
 
                 <motion.div
@@ -283,16 +368,16 @@ const HowItWorks = () => {
                 </motion.div>
               </div>
 
-              {/* Right: step preview cards */}
+              {/* Right: ramp phase preview cards */}
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, delay: 0.25 }}
                 className="hidden lg:flex flex-col gap-3"
               >
-                {processSteps.map((step, i) => (
+                {rampPhases.map((phase, i) => (
                   <motion.div
-                    key={step.number}
+                    key={phase.week}
                     initial={{ opacity: 0, x: 16 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.35 + i * 0.1 }}
@@ -302,18 +387,21 @@ const HowItWorks = () => {
                       className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{ background: "hsl(102 40% 20%)" }}
                     >
-                      <span className="text-white font-bold text-sm font-mono">
-                        {step.number}
+                      <span className="text-white font-bold text-xs font-mono text-center leading-tight">
+                        {phase.abbr}
                       </span>
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="text-xs font-semibold text-sage uppercase tracking-wider mb-0.5">
-                        {step.phase}
+                        {phase.week}
                       </div>
                       <div className="text-sm font-semibold text-foreground truncate">
-                        {step.title}
+                        {phase.title}
                       </div>
                     </div>
+                    <span className="text-xs text-muted-foreground/50 flex-shrink-0 hidden xl:block">
+                      {phase.cadence}
+                    </span>
                     <ChevronRight className="w-4 h-4 text-muted-foreground/30 flex-shrink-0 group-hover:text-sage/50 transition-colors" />
                   </motion.div>
                 ))}
@@ -321,7 +409,7 @@ const HowItWorks = () => {
                 <div className="flex items-center gap-2 px-4 mt-1">
                   <Clock className="w-3.5 h-3.5 text-sage/50" />
                   <span className="text-xs text-muted-foreground">
-                    Total: 5 business days
+                    Four-week structured ramp, every client
                   </span>
                 </div>
               </motion.div>
@@ -365,7 +453,7 @@ const HowItWorks = () => {
                 The Process
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                Three steps from brief to embedded specialist
+                Three phases, all deeply managed
               </h2>
             </motion.div>
 
@@ -432,6 +520,136 @@ const HowItWorks = () => {
           </div>
         </section>
 
+        {/* ── Inside the First Month ────────────────────────────────── */}
+        <section className="py-20 md:py-32 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.div {...fadeUp} className="text-center mb-16 max-w-2xl mx-auto">
+              <p className="text-sm font-semibold text-sage uppercase tracking-widest mb-4">
+                The Ramp
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                Inside the first month
+              </h2>
+              <p className="text-muted-foreground mt-4 text-lg leading-relaxed">
+                Most outsourcing services hand you someone and leave you to figure out the rest. We run a structured four-week program — with milestones, daily oversight, and a graduation checklist before we call it done.
+              </p>
+            </motion.div>
+
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+              {rampPhases.map((phase, index) => (
+                <motion.div
+                  key={phase.week}
+                  {...fadeUp}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="relative bg-card rounded-3xl border border-border p-6 hover:border-sage/30 hover:shadow-card transition-all duration-300"
+                >
+                  <div className="mb-4">
+                    <span className="inline-flex items-center px-2.5 py-1 rounded-full bg-sage/10 text-sage text-xs font-semibold">
+                      {phase.week}
+                    </span>
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
+                    {phase.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {phase.description}
+                  </p>
+                  <div className="flex items-center gap-1.5 text-xs text-sage font-semibold">
+                    <Clock className="w-3.5 h-3.5" />
+                    {phase.cadence}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── What Hands-On Looks Like ──────────────────────────────── */}
+        <section className="py-20 md:py-32 bg-card">
+          <div className="container mx-auto px-6">
+            <motion.div {...fadeUp} className="text-center mb-16 max-w-2xl mx-auto">
+              <p className="text-sm font-semibold text-sage uppercase tracking-widest mb-4">
+                Our Commitments
+              </p>
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
+                This is what hands-on actually looks like
+              </h2>
+            </motion.div>
+
+            <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
+              {commitments.map((item, index) => {
+                const Icon = item.icon;
+                return (
+                  <motion.div
+                    key={item.title}
+                    {...fadeUp}
+                    transition={{ duration: 0.5, delay: index * 0.07 }}
+                    className="bg-background rounded-3xl border border-border p-6 hover:border-sage/30 hover:shadow-card transition-all duration-300"
+                  >
+                    <div className="w-10 h-10 rounded-xl bg-sage/10 flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-sage" />
+                    </div>
+                    <h3 className="font-display text-base font-bold text-foreground mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Guarantee cards */}
+            <div className="grid md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+              <motion.div
+                {...fadeUp}
+                className="relative rounded-3xl border border-sage/25 overflow-hidden p-8"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsl(102 35% 92%) 0%, hsl(102 25% 94%) 100%)",
+                  boxShadow:
+                    "0 4px 40px -12px hsl(var(--sage) / 0.2), inset 0 1px 0 0 hsl(var(--sage) / 0.15)",
+                }}
+              >
+                <div className="w-12 h-12 bg-white/70 rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                  <Clock className="w-6 h-6 text-sage" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                  5-business-day match SLA
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  From your intake call to a specialist's first day — we move
+                  fast without cutting corners. Most matches happen in 3–4 days.
+                </p>
+              </motion.div>
+
+              <motion.div
+                {...fadeUp}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative rounded-3xl border border-sage/25 overflow-hidden p-8"
+                style={{
+                  background:
+                    "linear-gradient(135deg, hsl(102 35% 92%) 0%, hsl(102 25% 94%) 100%)",
+                  boxShadow:
+                    "0 4px 40px -12px hsl(var(--sage) / 0.2), inset 0 1px 0 0 hsl(var(--sage) / 0.15)",
+                }}
+              >
+                <div className="w-12 h-12 bg-white/70 rounded-xl flex items-center justify-center mb-6 shadow-sm">
+                  <ShieldCheck className="w-6 h-6 text-sage" />
+                </div>
+                <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                  Guaranteed service
+                </h3>
+                <p className="text-muted-foreground leading-relaxed text-sm">
+                  If the match isn't right — at any point — we find a new
+                  specialist at no additional cost. No paperwork, no delays.
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
         {/* ── Vetting Funnel ───────────────────────────────────────── */}
         <section className="py-20 md:py-32 bg-background">
           <div className="container mx-auto px-6">
@@ -447,9 +665,10 @@ const HowItWorks = () => {
                   applicants make it through
                 </h2>
                 <p className="text-muted-foreground leading-relaxed mb-8">
-                  We run a four-stage process that combines portfolio review,
+                  We run a four-stage process combining portfolio review,
                   real-tool skills testing, video interviews, and a paid trial
-                  task. Only the top performers reach placement.
+                  task on actual client workflows. Only top performers reach
+                  placement.
                 </p>
                 <div className="flex items-start gap-3 p-4 rounded-2xl bg-sage/10 border border-sage/20">
                   <ShieldCheck className="w-5 h-5 text-sage flex-shrink-0 mt-0.5" />
@@ -497,6 +716,72 @@ const HowItWorks = () => {
                     </motion.div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Culture & Retention ──────────────────────────────────── */}
+        <section className="py-20 md:py-32 bg-card">
+          <div className="container mx-auto px-6">
+            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+              {/* Left: big stat */}
+              <motion.div {...fadeUp} className="lg:sticky lg:top-32">
+                <p className="text-sm font-semibold text-sage uppercase tracking-widest mb-4">
+                  The Culture
+                </p>
+                <div className="font-display text-8xl md:text-9xl font-bold text-sage leading-none mb-4">
+                  &lt;5%
+                </div>
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-5">
+                  Annual attrition. That's not an accident.
+                </h2>
+                <p className="text-muted-foreground leading-relaxed mb-4">
+                  Most outsourcing companies deal with constant turnover — which means clients repeatedly re-train new people and lose the deep familiarity that makes a specialist genuinely valuable.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  We've built a working environment our team wants to stay in. We invest heavily in developing every team member — their skills, their career, their experience at work. The result is a team that brings genuine care to what they do, and specialists who are still with your account a year from now.
+                </p>
+              </motion.div>
+
+              {/* Right: what this means for clients */}
+              <div className="space-y-4">
+                {[
+                  {
+                    title: "No constant re-training",
+                    description:
+                      "When your specialist stays, you're not starting from scratch every few months. Your workflows, preferences, and institutional context accumulate — they don't reset.",
+                  },
+                  {
+                    title: "Expertise that compounds",
+                    description:
+                      "A specialist who's worked in your systems for a year operates at a fundamentally different level than one who's still learning. Depth of familiarity drives quality of output.",
+                  },
+                  {
+                    title: "A team that's invested",
+                    description:
+                      "Specialists who work somewhere they're valued bring more care to the work they do. We invest in developing the best team members, and that investment shows up in the results you get.",
+                  },
+                ].map((item, index) => (
+                  <motion.div
+                    key={item.title}
+                    {...fadeUp}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="bg-background rounded-2xl border border-border p-6 hover:border-sage/30 hover:shadow-card transition-all duration-300"
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="w-5 h-5 rounded-full bg-sage/15 flex items-center justify-center flex-shrink-0">
+                        <Check className="w-3 h-3 text-sage" strokeWidth={2.5} />
+                      </div>
+                      <h3 className="font-display font-bold text-foreground">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed pl-8">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -596,72 +881,8 @@ const HowItWorks = () => {
           </div>
         </section>
 
-        {/* ── SLA + Guarantee ──────────────────────────────────────── */}
-        <section className="py-20 md:py-28 bg-background">
-          <div className="container mx-auto px-6">
-            <motion.div
-              {...fadeUp}
-              className="text-center mb-12 max-w-xl mx-auto"
-            >
-              <p className="text-sm font-semibold text-sage uppercase tracking-widest mb-4">
-                Our Commitments
-              </p>
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
-                What we guarantee
-              </h2>
-            </motion.div>
-
-            <div className="grid md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-              <motion.div
-                {...fadeUp}
-                className="relative rounded-3xl border border-sage/25 overflow-hidden p-8 md:p-10"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(102 35% 92%) 0%, hsl(102 25% 94%) 100%)",
-                  boxShadow:
-                    "0 4px 40px -12px hsl(var(--sage) / 0.2), inset 0 1px 0 0 hsl(var(--sage) / 0.15)",
-                }}
-              >
-                <div className="w-12 h-12 bg-white/70 rounded-xl flex items-center justify-center mb-6 shadow-sm">
-                  <Clock className="w-6 h-6 text-sage" />
-                </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3">
-                  5-business-day match SLA
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  From your intake call to a specialist's first day — we move
-                  fast without cutting corners. Most matches happen in 3–4 days.
-                </p>
-              </motion.div>
-
-              <motion.div
-                {...fadeUp}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="relative rounded-3xl border border-sage/25 overflow-hidden p-8 md:p-10"
-                style={{
-                  background:
-                    "linear-gradient(135deg, hsl(102 35% 92%) 0%, hsl(102 25% 94%) 100%)",
-                  boxShadow:
-                    "0 4px 40px -12px hsl(var(--sage) / 0.2), inset 0 1px 0 0 hsl(var(--sage) / 0.15)",
-                }}
-              >
-                <div className="w-12 h-12 bg-white/70 rounded-xl flex items-center justify-center mb-6 shadow-sm">
-                  <ShieldCheck className="w-6 h-6 text-sage" />
-                </div>
-                <h3 className="font-display text-xl md:text-2xl font-bold text-foreground mb-3">
-                  Guaranteed service
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  If the match isn't right — at any point — we find a new
-                  specialist at no additional cost. No paperwork, no delays.
-                </p>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
         {/* ── FAQ ──────────────────────────────────────────────────── */}
-        <section className="py-20 md:py-28 bg-card">
+        <section className="py-20 md:py-28 bg-background">
           <div className="container mx-auto px-6">
             <motion.div {...fadeUp} className="text-center mb-12">
               <p className="text-sm font-semibold text-sage uppercase tracking-widest mb-4">

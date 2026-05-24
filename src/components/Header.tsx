@@ -1,20 +1,27 @@
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, ChevronRight, ArrowUpRight } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router";
 import logo from "@/assets/logo.png";
 import { services } from "@/data/taxonomy";
 
+let headerHasAnimated = false;
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isWhyOpen, setIsWhyOpen] = useState(false);
   const [activeServiceSlug, setActiveServiceSlug] = useState<string>(services[0].slug);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileWhyOpen, setMobileWhyOpen] = useState(false);
   const [mobileActiveService, setMobileActiveService] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const whyCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { scrollY } = useScroll();
+  const isFirstLoad = !headerHasAnimated;
+  useEffect(() => { headerHasAnimated = true; }, []);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest >= 50);
@@ -22,6 +29,8 @@ const Header = () => {
 
   const handleServicesEnter = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
+    if (whyCloseTimer.current) clearTimeout(whyCloseTimer.current);
+    setIsWhyOpen(false);
     setIsServicesOpen(true);
   };
 
@@ -31,15 +40,30 @@ const Header = () => {
 
   const activeService = services.find((s) => s.slug === activeServiceSlug) ?? services[0];
 
+  const whyLinks = [
+    { label: "How It Works", href: "/how-it-works" },
+    { label: "About", href: "/about" },
+  ];
+
   const navLinks = [
-    { label: "How It Works", href: "/how-it-works", isRoute: true },
     { label: "Pricing", href: "/pricing", isRoute: true },
     { label: "Careers", href: "/careers", isRoute: true },
   ];
 
+  const handleWhyEnter = () => {
+    if (whyCloseTimer.current) clearTimeout(whyCloseTimer.current);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setIsServicesOpen(false);
+    setIsWhyOpen(true);
+  };
+
+  const handleWhyLeave = () => {
+    whyCloseTimer.current = setTimeout(() => setIsWhyOpen(false), 120);
+  };
+
   return (
     <motion.header
-      initial={{ y: -20, opacity: 0 }}
+      initial={isFirstLoad ? { y: -20, opacity: 0 } : false}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1] }}
       className="fixed top-8 left-0 right-0 z-50 px-9 md:px-10"
@@ -65,6 +89,7 @@ const Header = () => {
         <Link to="/" className="absolute left-6">
           <motion.div
             className="flex items-center"
+            initial={false}
             animate={{ x: isScrolled ? 0 : "max(calc(50vw - 50% - 580px), 0px)" }}
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
             whileHover={{ scale: 1.02 }}
@@ -83,7 +108,7 @@ const Header = () => {
             onMouseLeave={handleServicesLeave}
           >
             <motion.button
-              initial={{ opacity: 0, y: -10 }}
+              initial={isFirstLoad ? { opacity: 0, y: -10 } : false}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1, duration: 0.3 }}
               className="flex items-center gap-1 px-4 py-2 text-foreground/80 hover:text-foreground transition-colors text-sm font-medium rounded-lg hover:bg-muted/50"
@@ -101,7 +126,7 @@ const Header = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 8, x: '-50%' }}
                   animate={{ opacity: 1, y: 0, x: '-50%' }}
-                  exit={{ opacity: 0, y: 8, x: '-50%' }}
+                  exit={{ opacity: 0, y: 8, x: '-50%', transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] } }}
                   transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
                   onMouseEnter={handleServicesEnter}
                   onMouseLeave={handleServicesLeave}
@@ -200,11 +225,61 @@ const Header = () => {
             </AnimatePresence>
           </div>
 
+          {/* Why NorthOak? dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={handleWhyEnter}
+            onMouseLeave={handleWhyLeave}
+          >
+            <motion.button
+              initial={isFirstLoad ? { opacity: 0, y: -10 } : false}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15, duration: 0.3 }}
+              className="flex items-center gap-1 px-4 py-2 text-foreground/80 hover:text-foreground transition-colors text-sm font-medium rounded-lg hover:bg-muted/50"
+            >
+              Why NorthOak?
+              <ChevronDown
+                className={`w-4 h-4 opacity-60 transition-transform duration-200 ${
+                  isWhyOpen ? "rotate-180" : ""
+                }`}
+              />
+            </motion.button>
+
+            <AnimatePresence>
+              {isWhyOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, x: '-50%' }}
+                  animate={{ opacity: 1, y: 0, x: '-50%' }}
+                  exit={{ opacity: 0, y: 8, x: '-50%', transition: { duration: 0.5, ease: [0.19, 1, 0.22, 1] } }}
+                  transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
+                  onMouseEnter={handleWhyEnter}
+                  onMouseLeave={handleWhyLeave}
+                  className="absolute top-full left-1/2 mt-3 z-50"
+                  style={{ width: 200 }}
+                >
+                  <div className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-card border-l border-t border-border/50 rotate-45 z-10" />
+                  <div className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden py-2">
+                    {whyLinks.map((link) => (
+                      <Link
+                        key={link.label}
+                        to={link.href}
+                        onClick={() => setIsWhyOpen(false)}
+                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
           {/* Other nav links */}
           {navLinks.map((link, index) => (
             <Link key={link.label} to={link.href}>
               <motion.span
-                initial={{ opacity: 0, y: -10 }}
+                initial={isFirstLoad ? { opacity: 0, y: -10 } : false}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.15 + index * 0.05, duration: 0.3 }}
                 className="flex items-center gap-1 px-4 py-2 text-foreground/80 hover:text-foreground transition-colors text-sm font-medium rounded-lg hover:bg-muted/50 cursor-pointer"
@@ -218,7 +293,7 @@ const Header = () => {
         {/* CTA Button */}
         <motion.div
           className="hidden lg:block absolute right-6"
-          initial={{ opacity: 0, scale: 0.9 }}
+          initial={false}
           animate={{
             opacity: 1,
             scale: 1,
@@ -387,6 +462,52 @@ const Header = () => {
                             </div>
                           );
                         })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Mobile Why NorthOak? accordion */}
+              <div>
+                <motion.button
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1, duration: 0.2 }}
+                  className="flex items-center justify-between w-full px-4 py-3 text-foreground/80 hover:text-foreground hover:bg-muted/50 transition-colors rounded-lg"
+                  onClick={() => setMobileWhyOpen(!mobileWhyOpen)}
+                >
+                  <span className="font-medium">Why NorthOak?</span>
+                  <ChevronDown
+                    className={`w-4 h-4 opacity-60 transition-transform duration-200 ${
+                      mobileWhyOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </motion.button>
+
+                <AnimatePresence>
+                  {mobileWhyOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="pl-4 py-1 space-y-0.5">
+                        {whyLinks.map((link) => (
+                          <Link
+                            key={link.label}
+                            to={link.href}
+                            onClick={() => {
+                              setIsMenuOpen(false);
+                              setMobileWhyOpen(false);
+                            }}
+                            className="flex items-center gap-2 px-3 py-2.5 text-sm text-foreground/70 hover:text-foreground hover:bg-muted/50 transition-colors rounded-lg"
+                          >
+                            <span className="font-medium">{link.label}</span>
+                          </Link>
+                        ))}
                       </div>
                     </motion.div>
                   )}
