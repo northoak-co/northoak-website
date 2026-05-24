@@ -6,6 +6,7 @@ import Process from "@/components/Process";
 import Testimonial from "@/components/Testimonial";
 import HomeFAQ, { faqs } from "@/components/HomeFAQ";
 import Partners from "@/components/Partners";
+import SavingsCalculator from "@/components/SavingsCalculator";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { pageMeta, faqSchema } from "@/lib/seo";
@@ -39,6 +40,7 @@ const Index = () => {
         <Testimonial />
         <HomeFAQ />
         <Partners />
+        <SavingsCalculator />
         <CTASection />
       </main>
       <Footer />

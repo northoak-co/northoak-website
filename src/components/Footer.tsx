@@ -19,6 +19,7 @@ const Footer = () => {
     { name: "Pricing", link: "/pricing" },
     { name: "Security", link: "/security" },
     { name: "Careers", link: "/careers" },
+    { name: "Savings Calculator", link: "/savings-calculator" },
   ];
 
   const compare = [

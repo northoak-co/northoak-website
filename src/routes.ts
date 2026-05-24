@@ -24,6 +24,7 @@ export default [
   route("roles/finance-accounting", "pages/roles/FinanceAccounting.tsx"),
   route("roles/back-office-admin", "pages/roles/BackOfficeAdmin.tsx"),
 
+<<<<<<< HEAD
   // Individual role pages — Sales & GTM
   route("roles/sdr", "pages/roles/SDR.tsx"),
   route("roles/crm-manager", "pages/roles/CRMManager.tsx"),
@@ -74,6 +75,7 @@ export default [
   route("vs/domestic-hire", "pages/vs/DomesticHire.tsx"),
   route("vs/traditional-bpo", "pages/vs/TraditionalBPO.tsx"),
 
+  route("savings-calculator", "pages/SavingsCalculatorPage.tsx"),
   route("terms-of-service", "pages/TermsOfService.tsx"),
   route("privacy-policy", "pages/PrivacyPolicy.tsx"),
 
