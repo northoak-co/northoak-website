@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const SDR = () => {
   return (
     <RolePageLayout
       icon={TrendingUp}
+      image={crmManagementImg}
       title="Sales Development Representative"
       subtitle="Sales and Go-to-Market"
       description="Keep your pipeline full with a dedicated SDR who prospects, qualifies leads, and books meetings for your account executives — without the domestic hiring overhead."

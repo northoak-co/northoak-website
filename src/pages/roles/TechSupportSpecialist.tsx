@@ -1,5 +1,6 @@
 import { Headphones } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import customerSupportImg from "@/assets/characters/customer-support.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const TechSupportSpecialist = () => {
   return (
     <RolePageLayout
       icon={Headphones}
+      image={customerSupportImg}
       title="Technical Support Specialist"
       subtitle="Customer Support and Client Success"
       description="Resolve technical issues faster and protect your engineering team's focus with a dedicated specialist who handles L1/L2 troubleshooting, API questions, and integration support."

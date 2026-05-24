@@ -155,25 +155,29 @@ const logos = [{
   src: truebeautyLogo
 }];
 const solutions = [{
-  name: "CRM Management",
+  name: "Sales",
   image: crmManagementImg,
-  link: "/roles/crm-management"
+  link: "/services/sales-gtm"
 }, {
-  name: "Customer Support",
+  name: "Support",
   image: customerSupportImg,
-  link: "/roles/customer-support"
+  link: "/services/customer-support"
 }, {
-  name: "HR Admin",
-  image: hrAdminImg,
-  link: "/roles/hr-admin"
-}, {
-  name: "Process Automation",
+  name: "Marketing",
   image: processAutomationImg,
-  link: "/roles/virtual-assistant"
+  link: "/services/marketing"
 }, {
-  name: "Finance & Accounting",
+  name: "Finance",
   image: financeAccountingImg,
-  link: "/roles/finance-accounting"
+  link: "/services/finance-accounting"
+}, {
+  name: "Executive Assistance",
+  image: hrAdminImg,
+  link: "/services/executive-assistance"
+}, {
+  name: "Back Office",
+  image: hrAdminImg,
+  link: "/services/back-office-admin"
 }];
 const Hero = () => {
   const rotatingWords = ["customer service", "finance & accounting", "payroll admin", "social media management", "video editing", "back office admin"];

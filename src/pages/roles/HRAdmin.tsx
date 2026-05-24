@@ -1,5 +1,6 @@
 import { ClipboardList } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const HRAdmin = () => {
   return (
     <RolePageLayout
       icon={ClipboardList}
+      image={hrAdminImg}
       title="HR Admin"
       subtitle="Human Resources Administration"
       description="Streamline your HR workflows with expert payroll, recruitment, and administrative services that keep your team running smoothly."

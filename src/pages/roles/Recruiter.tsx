@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const Recruiter = () => {
   return (
     <RolePageLayout
       icon={Users}
+      image={hrAdminImg}
       title="Recruiter"
       subtitle="Human Resources and People Operations"
       description="Hire faster and stop paying agency fees — a dedicated recruiter who owns sourcing, screening, scheduling, and offer management for your open roles."

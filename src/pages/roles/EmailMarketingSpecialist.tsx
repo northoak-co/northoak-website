@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import processAutomationImg from "@/assets/characters/process-automation.png";
 
 export const meta = () => [
   ...pageMeta({ title: "Hire a Email Marketing Specialist - NorthOak", description: "Dedicated Email Marketing Specialist specialists for high-growth teams. Starts at $2,000/mo." }),

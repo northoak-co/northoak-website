@@ -1,5 +1,6 @@
 import { Megaphone } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import processAutomationImg from "@/assets/characters/process-automation.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const SocialMediaManager = () => {
   return (
     <RolePageLayout
       icon={Megaphone}
+      image={processAutomationImg}
       title="Social Media Manager"
       subtitle="Marketing"
       description="Build an active, growing social presence with a dedicated manager who creates content, manages your channels, engages your audience, and reports on what's working."

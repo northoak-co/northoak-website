@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const HRCoordinator = () => {
   return (
     <RolePageLayout
       icon={Users}
+      image={hrAdminImg}
       title="HR Coordinator"
       subtitle="Human Resources and People Operations"
       description="Keep your HR operations running without missing a beat — a dedicated coordinator who handles recruiting logistics, onboarding, benefits, and HR admin so your team stays focused."

@@ -1,5 +1,6 @@
 import { PiggyBank } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import financeAccountingImg from "@/assets/characters/finance-accounting.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const PayrollSpecialist = () => {
   return (
     <RolePageLayout
       icon={PiggyBank}
+      image={financeAccountingImg}
       title="Payroll Specialist"
       subtitle="Finance and Accounting"
       description="Ensure every employee is paid accurately and on time with a dedicated payroll specialist who owns your entire payroll cycle — from timesheet to disbursement."

@@ -1,5 +1,6 @@
 import { PiggyBank } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import financeAccountingImg from "@/assets/characters/finance-accounting.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const FinanceAccounting = () => {
   return (
     <RolePageLayout
       icon={PiggyBank}
+      image={financeAccountingImg}
       title="Finance & Accounting"
       subtitle="Financial Operations"
       description="Feel confident in your financial operations with expert bookkeeping and accounting services that keep your books accurate."
