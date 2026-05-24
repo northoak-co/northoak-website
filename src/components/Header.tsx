@@ -99,19 +99,17 @@ const Header = () => {
             <AnimatePresence>
               {isServicesOpen && (
                 <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 8, x: '-50%' }}
+                  animate={{ opacity: 1, y: 0, x: '-50%' }}
+                  exit={{ opacity: 0, y: 8, x: '-50%' }}
                   transition={{ duration: 0.18, ease: [0.4, 0, 0.2, 1] }}
                   onMouseEnter={handleServicesEnter}
                   onMouseLeave={handleServicesLeave}
-                  className="absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50"
+                  className="absolute top-full left-1/2 mt-3 z-50"
                   style={{ width: 520 }}
                 >
-                  {/* Arrow pointer */}
-                  <div className="flex justify-center mb-[-1px]">
-                    <div className="w-3 h-3 bg-card border-l border-t border-border/50 rotate-45 z-10 relative" />
-                  </div>
+                  {/* Arrow pointer — absolute so it's always centered on the Services button */}
+                  <div className="absolute -top-[6px] left-1/2 -translate-x-1/2 w-3 h-3 bg-card border-l border-t border-border/50 rotate-45 z-10" />
 
                   <div className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden flex">
                     {/* Left panel — service list */}

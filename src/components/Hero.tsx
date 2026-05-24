@@ -193,12 +193,12 @@ const Hero = () => {
   const smoothMouseY = useSpring(mouseY, springConfig);
 
   // Transform mouse position to movement ranges for orbs
-  const orb1X = useTransform(smoothMouseX, [0, 1], [-30, 30]);
-  const orb1Y = useTransform(smoothMouseY, [0, 1], [-30, 30]);
-  const orb2X = useTransform(smoothMouseX, [0, 1], [20, -20]);
-  const orb2Y = useTransform(smoothMouseY, [0, 1], [25, -25]);
-  const orb3X = useTransform(smoothMouseX, [0, 1], [-15, 15]);
-  const orb3Y = useTransform(smoothMouseY, [0, 1], [-20, 20]);
+  const orb1X = useTransform(smoothMouseX, [0, 1], [-45, 45]);
+  const orb1Y = useTransform(smoothMouseY, [0, 1], [-45, 45]);
+  const orb2X = useTransform(smoothMouseX, [0, 1], [32, -32]);
+  const orb2Y = useTransform(smoothMouseY, [0, 1], [37, -37]);
+  const orb3X = useTransform(smoothMouseX, [0, 1], [-25, 25]);
+  const orb3Y = useTransform(smoothMouseY, [0, 1], [-30, 30]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -233,35 +233,35 @@ const Hero = () => {
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
             {/* Large primary orb - top right */}
             <motion.div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full blur-3xl" style={{
-            background: "radial-gradient(circle, hsl(102 44% 51% / 0.3) 0%, transparent 70%)",
+            background: "radial-gradient(circle, hsl(102 44% 51% / 0.38) 0%, transparent 70%)",
             x: orb1X,
             y: orb1Y
           }} />
 
             {/* Secondary orb - bottom left */}
             <motion.div className="absolute -bottom-48 -left-32 w-[700px] h-[700px] rounded-full blur-3xl" style={{
-            background: "radial-gradient(circle, hsl(102 40% 55% / 0.25) 0%, transparent 70%)",
+            background: "radial-gradient(circle, hsl(102 40% 55% / 0.31) 0%, transparent 70%)",
             x: orb2X,
             y: orb2Y
           }} />
 
             {/* Center accent orb */}
             <motion.div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full blur-3xl" style={{
-            background: "radial-gradient(circle, hsl(102 35% 60% / 0.18) 0%, transparent 60%)",
+            background: "radial-gradient(circle, hsl(102 35% 60% / 0.23) 0%, transparent 60%)",
             x: orb3X,
             y: orb3Y
           }} />
 
             {/* Subtle floating particles */}
             <motion.div className="absolute top-1/4 right-1/4 w-48 h-48 rounded-full blur-2xl" style={{
-            background: "hsl(102 44% 51% / 0.2)",
-            x: useTransform(smoothMouseX, [0, 1], [10, -10]),
-            y: useTransform(smoothMouseY, [0, 1], [15, -15])
+            background: "hsl(102 44% 51% / 0.25)",
+            x: useTransform(smoothMouseX, [0, 1], [17, -17]),
+            y: useTransform(smoothMouseY, [0, 1], [22, -22])
           }} />
             <motion.div className="absolute bottom-1/3 left-1/3 w-40 h-40 rounded-full blur-2xl" style={{
-            background: "hsl(102 44% 51% / 0.15)",
-            x: useTransform(smoothMouseX, [0, 1], [-8, 8]),
-            y: useTransform(smoothMouseY, [0, 1], [-12, 12])
+            background: "hsl(102 44% 51% / 0.19)",
+            x: useTransform(smoothMouseX, [0, 1], [-14, 14]),
+            y: useTransform(smoothMouseY, [0, 1], [-18, 18])
           }} />
           </div>
 
