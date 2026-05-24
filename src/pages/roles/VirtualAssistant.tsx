@@ -1,6 +1,6 @@
 import { Cog } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
-import processAutomationImg from "@/assets/characters/process-automation.png";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -56,7 +56,7 @@ const VirtualAssistant = () => {
   return (
     <RolePageLayout
       icon={Cog}
-      image={processAutomationImg}
+      image={hrAdminImg}
       title="Virtual Assistant"
       subtitle="Executive & Administrative Support"
       description="Supercharge your daily to-dos, scheduling, inbox review, follow-ups, and much more with a dedicated virtual assistant."

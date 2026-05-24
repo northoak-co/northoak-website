@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { pageMeta, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import ServiceHero from "@/components/ServiceHero";
-import processAutomationImg from "@/assets/characters/process-automation.png";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 
 export const meta = () => [
   ...pageMeta({
@@ -72,7 +72,7 @@ const ExecutiveAssistanceService = () => {
           title="Executive Assistance"
           description="Reclaim your highest-value hours with a dedicated EA who manages your calendar, inbox, travel, and stakeholder communications so you stay focused on what only you can do."
           ctaLabel="Hire an Executive Assistant"
-          image={processAutomationImg}
+          image={hrAdminImg}
           imageAlt="Executive assistant"
           guarantee="✓ Guaranteed service · Starts at $2,000/mo"
         />

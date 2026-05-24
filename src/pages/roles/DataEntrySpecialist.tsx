@@ -1,6 +1,6 @@
 import { FileText } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
-import processAutomationImg from "@/assets/characters/process-automation.png";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -56,7 +56,7 @@ const DataEntrySpecialist = () => {
   return (
     <RolePageLayout
       icon={FileText}
-      image={processAutomationImg}
+      image={hrAdminImg}
       title="Data Entry Specialist"
       subtitle="Back Office Administration"
       description="Keep your databases clean, current, and reliable with a dedicated data entry specialist who handles high-volume processing with documented accuracy standards."

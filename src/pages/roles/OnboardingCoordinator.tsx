@@ -58,7 +58,7 @@ const OnboardingCoordinator = () => {
       icon={Users}
       image={customerSupportImg}
       title="Onboarding Coordinator"
-      subtitle="Human Resources and People Operations"
+      subtitle="Customer Support & Client Success"
       description="Make every new hire's first day — and first 90 days — exceptional with a dedicated coordinator who handles every detail from offer acceptance to full productivity."
       benefits={[
         "First days that impress instead of frustrate new hires",
