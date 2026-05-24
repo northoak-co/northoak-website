@@ -13,6 +13,7 @@ export default [
   route("roles/finance-accounting", "pages/roles/FinanceAccounting.tsx"),
   route("roles/back-office-admin", "pages/roles/BackOfficeAdmin.tsx"),
 
+  route("savings-calculator", "pages/SavingsCalculatorPage.tsx"),
   route("terms-of-service", "pages/TermsOfService.tsx"),
   route("privacy-policy", "pages/PrivacyPolicy.tsx"),
 

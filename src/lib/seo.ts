@@ -72,6 +72,20 @@ export function serviceSchema({
   };
 }
 
+export function faqSchema(faqs: { q: string; a: string }[]): MetaDescriptor {
+  return {
+    "script:ld+json": {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  };
+}
+
 type Crumb = { name: string; path: string };
 
 export function breadcrumbSchema(crumbs: Crumb[]): MetaDescriptor {

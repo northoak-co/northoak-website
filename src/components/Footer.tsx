@@ -17,6 +17,7 @@ const Footer = () => {
   const company = [
     { name: "Pricing", link: "/pricing" },
     { name: "Careers", link: "/careers" },
+    { name: "Savings Calculator", link: "/savings-calculator" },
   ];
 
 
