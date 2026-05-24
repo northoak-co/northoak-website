@@ -279,7 +279,7 @@ const Hero = () => {
             }} className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 <span className="text-foreground">Time is money.</span>
                 <br />
-                <span className="text-foreground">Save both by offshoring your</span>
+                <span className="text-foreground">Save both by outsourcing your</span>
                 <br />
                 <span className="inline-block min-w-[280px] md:min-w-[380px]">
                   <AnimatePresence mode="wait">
@@ -370,7 +370,7 @@ const Hero = () => {
           }} transition={{
             duration: 0.6,
             delay: 0.9
-          }} className="flex justify-center">
+          }} className="flex flex-col items-center gap-3">
               <Link to="/get-started">
                 <button className="group flex items-center bg-sage hover:bg-sage-dark transition-colors duration-200 rounded-full overflow-hidden">
                   <span className="px-6 py-3 text-white font-medium">Build Your Dream Team</span>
@@ -379,6 +379,9 @@ const Hero = () => {
                   </span>
                 </button>
               </Link>
+              <p className="text-sm text-muted-foreground">
+                ✓ Guaranteed service · Starts at $2,000/mo
+              </p>
             </motion.div>
           </div>
 
