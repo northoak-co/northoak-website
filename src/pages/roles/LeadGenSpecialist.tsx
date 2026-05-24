@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const LeadGenSpecialist = () => {
   return (
     <RolePageLayout
       icon={TrendingUp}
+      image={crmManagementImg}
       title="Lead Generation Specialist"
       subtitle="Sales and Go-to-Market"
       description="Keep your outbound pipeline stocked with a dedicated specialist who researches, builds, and enriches targeted prospect lists matched to your ICP."

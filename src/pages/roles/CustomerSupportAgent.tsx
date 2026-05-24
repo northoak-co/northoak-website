@@ -1,5 +1,6 @@
 import { Headphones } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import customerSupportImg from "@/assets/characters/customer-support.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const CustomerSupportAgent = () => {
   return (
     <RolePageLayout
       icon={Headphones}
+      image={customerSupportImg}
       title="Customer Support Agent"
       subtitle="Customer Support and Client Success"
       description="Deliver fast, high-quality customer support across email and chat with a dedicated agent trained in your product, policies, and brand voice."

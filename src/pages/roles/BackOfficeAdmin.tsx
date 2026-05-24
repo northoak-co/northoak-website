@@ -1,5 +1,6 @@
 import { FileText } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import hrAdminImg from "@/assets/characters/hr-admin.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const BackOfficeAdmin = () => {
   return (
     <RolePageLayout
       icon={FileText}
+      image={hrAdminImg}
       title="Back Office Admin"
       subtitle="Operations & Administration"
       description="Have other manual workflows and processes unique to your business? Our back office specialists will handle them for you."

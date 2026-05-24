@@ -1,5 +1,6 @@
 import { Megaphone } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import processAutomationImg from "@/assets/characters/process-automation.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const ContentWriter = () => {
   return (
     <RolePageLayout
       icon={Megaphone}
+      image={processAutomationImg}
       title="Content Writer"
       subtitle="Marketing"
       description="Build a consistent content engine with a dedicated writer who produces on-brand, SEO-optimized content that drives organic traffic and converts readers."

@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 
 export const meta = () => [
   ...pageMeta({ title: "Hire a Account Executive - NorthOak", description: "Dedicated Account Executive specialists for high-growth teams. Starts at $2,000/mo." }),

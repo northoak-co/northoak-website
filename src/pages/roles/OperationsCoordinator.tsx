@@ -1,5 +1,6 @@
 import { FileText } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import processAutomationImg from "@/assets/characters/process-automation.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const OperationsCoordinator = () => {
   return (
     <RolePageLayout
       icon={FileText}
+      image={processAutomationImg}
       title="Operations Coordinator"
       subtitle="Back Office Administration"
       description="Keep your operations running on time and on process with a dedicated coordinator who handles execution, documentation, and cross-functional coordination so nothing falls through the cracks."

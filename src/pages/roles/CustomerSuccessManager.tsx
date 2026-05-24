@@ -1,5 +1,6 @@
 import { Headphones } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import customerSupportImg from "@/assets/characters/customer-support.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const CustomerSuccessManager = () => {
   return (
     <RolePageLayout
       icon={Headphones}
+      image={customerSupportImg}
       title="Customer Success Manager"
       subtitle="Customer Support and Client Success"
       description="Reduce churn, drive product adoption, and grow existing accounts with a dedicated CSM who owns customer relationships from onboarding to renewal."

@@ -1,5 +1,6 @@
 import { PiggyBank } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import financeAccountingImg from "@/assets/characters/finance-accounting.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const AccountsReceivableSpecialist = () => {
   return (
     <RolePageLayout
       icon={PiggyBank}
+      image={financeAccountingImg}
       title="Accounts Receivable Specialist"
       subtitle="Finance and Accounting"
       description="Reduce days sales outstanding and improve cash flow with a dedicated AR specialist who handles invoicing, collections, and cash application end-to-end."

@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -56,6 +57,7 @@ const CRMManagement = () => {
   return (
     <RolePageLayout
       icon={Users}
+      image={crmManagementImg}
       title="CRM Management"
       subtitle="Customer Relationship Management"
       description="Keep your customer information up-to-date and manage ongoing sales and marketing workflows with dedicated CRM specialists."

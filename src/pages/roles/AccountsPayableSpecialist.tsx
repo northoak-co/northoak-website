@@ -1,5 +1,6 @@
 import { PiggyBank } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import financeAccountingImg from "@/assets/characters/finance-accounting.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const AccountsPayableSpecialist = () => {
   return (
     <RolePageLayout
       icon={PiggyBank}
+      image={financeAccountingImg}
       title="Accounts Payable Specialist"
       subtitle="Finance and Accounting"
       description="Eliminate late payments, vendor disputes, and AP backlogs with a dedicated specialist who owns your entire payables cycle from invoice to reconciliation."

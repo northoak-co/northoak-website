@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const CRMManager = () => {
   return (
     <RolePageLayout
       icon={TrendingUp}
+      image={crmManagementImg}
       title="CRM Manager"
       subtitle="Sales and Go-to-Market"
       description="Turn your CRM from a data graveyard into a revenue engine with a dedicated specialist who owns hygiene, automation, and pipeline visibility."

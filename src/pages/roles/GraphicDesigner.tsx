@@ -1,5 +1,6 @@
 import { Megaphone } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import processAutomationImg from "@/assets/characters/process-automation.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const GraphicDesigner = () => {
   return (
     <RolePageLayout
       icon={Megaphone}
+      image={processAutomationImg}
       title="Graphic Designer"
       subtitle="Marketing"
       description="Keep your brand looking sharp across every channel with a dedicated designer who turns briefs into polished, on-brand assets — without agency timelines or overhead."

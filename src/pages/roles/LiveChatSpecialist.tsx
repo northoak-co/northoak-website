@@ -1,6 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import customerSupportImg from "@/assets/characters/customer-support.png";
 
 export const meta = () => [
   ...pageMeta({ title: "Hire a Live Chat Specialist - NorthOak", description: "Dedicated Live Chat Specialist specialists for high-growth teams. Starts at $2,000/mo." }),

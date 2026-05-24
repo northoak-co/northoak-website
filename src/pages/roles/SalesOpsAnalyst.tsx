@@ -1,5 +1,6 @@
 import { TrendingUp } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
+import crmManagementImg from "@/assets/characters/crm-management.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -55,6 +56,7 @@ const SalesOpsAnalyst = () => {
   return (
     <RolePageLayout
       icon={TrendingUp}
+      image={crmManagementImg}
       title="Sales Operations Analyst"
       subtitle="Sales and Go-to-Market"
       description="Give your revenue team the data, systems, and process backbone they need to hit quota — with a dedicated sales ops analyst at a fraction of the domestic cost."
