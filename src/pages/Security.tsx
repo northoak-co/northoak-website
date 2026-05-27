@@ -3,7 +3,6 @@ import { ArrowRight, FileText, Lock, Monitor, Users2 } from "lucide-react";
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import {
   Accordion,
   AccordionItem,
@@ -281,7 +280,6 @@ const Security = () => {
           </div>
         </section>
 
-        <CTASection />
       </main>
 
       <Footer />

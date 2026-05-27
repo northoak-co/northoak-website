@@ -14,7 +14,6 @@ export default [
   route("services/hr-people-ops", "pages/services/HRPeopleOps.tsx"),
   route("services/finance-accounting", "pages/services/FinanceAccounting.tsx"),
   route("services/back-office-admin", "pages/services/BackOfficeAdmin.tsx"),
-  route("services/executive-assistance", "pages/services/ExecutiveAssistance.tsx"),
   route("services/marketing", "pages/services/Marketing.tsx"),
 
   // Legacy role pages (kept for backwards compatibility)

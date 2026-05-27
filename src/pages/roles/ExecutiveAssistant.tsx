@@ -1,6 +1,6 @@
 import { Briefcase } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
-import hrAdminImg from "@/assets/characters/hr-admin.png";
+import executiveAssistantImg from "@/assets/characters/executive-assistant.png";
 import { pageMeta, serviceSchema, breadcrumbSchema, faqSchema } from "@/lib/seo";
 
 const faqs = [
@@ -56,7 +56,7 @@ const ExecutiveAssistant = () => {
   return (
     <RolePageLayout
       icon={Briefcase}
-      image={hrAdminImg}
+      image={executiveAssistantImg}
       title="Executive Assistant"
       subtitle="Executive Assistance"
       description="Reclaim your highest-value hours with a dedicated EA who manages your calendar, inbox, travel, and stakeholder communications so you stay in the work that only you can do."

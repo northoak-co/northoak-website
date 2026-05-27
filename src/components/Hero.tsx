@@ -10,158 +10,14 @@ import hrAdminImg from "@/assets/characters/hr-admin.png";
 import processAutomationImg from "@/assets/characters/process-automation.png";
 import financeAccountingImg from "@/assets/characters/finance-accounting.png";
 
-// Import logos
-import unboundAcademyLogo from "@/assets/logos/unbound-academy.png";
-import prequelLogo from "@/assets/logos/prequel.png";
-import novatioLogo from "@/assets/logos/novatio.png";
-import italistLogo from "@/assets/logos/italist.png";
-import bonsaiLogo from "@/assets/logos/bonsai.png";
-import dozrLogo from "@/assets/logos/dozr.png";
-import stylightLogo from "@/assets/logos/stylight.png";
-import mybestbrandsLogo from "@/assets/logos/mybestbrands.png";
-import verishopLogo from "@/assets/logos/verishop.png";
-import egoLogo from "@/assets/logos/ego.png";
-import hewiLogo from "@/assets/logos/hewi.png";
-import raiserightLogo from "@/assets/logos/raiseright.png";
-import flipgiveLogo from "@/assets/logos/flipgive.png";
-import triangleLogo from "@/assets/logos/triangle.png";
-import brightearlyLogo from "@/assets/logos/brightearly.png";
-import vennLogo from "@/assets/logos/venn.png";
-import boysgetsadtooLogo from "@/assets/logos/boysgetsadtoo.png";
-import favoredliveLogo from "@/assets/logos/favoredlive.png";
-import bluejLogo from "@/assets/logos/bluej.png";
-import truebeautyLogo from "@/assets/logos/truebeauty.png";
-const logos = [{
-  name: "Unbound Academy",
-  src: unboundAcademyLogo
-}, {
-  name: "Prequel",
-  src: prequelLogo
-}, {
-  name: "Novatio",
-  src: novatioLogo
-}, {
-  name: "Italist",
-  src: italistLogo
-}, {
-  name: "Bonsai",
-  src: bonsaiLogo
-}, {
-  name: "DOZR",
-  src: dozrLogo
-}, {
-  name: "Stylight",
-  src: stylightLogo
-}, {
-  name: "MyBestBrands",
-  src: mybestbrandsLogo
-}, {
-  name: "Verishop",
-  src: verishopLogo
-}, {
-  name: "EGO",
-  src: egoLogo
-}, {
-  name: "Hewi",
-  src: hewiLogo
-}, {
-  name: "RaiseRight",
-  src: raiserightLogo
-}, {
-  name: "FlipGive",
-  src: flipgiveLogo
-}, {
-  name: "Triangle",
-  src: triangleLogo
-}, {
-  name: "Bright+Early",
-  src: brightearlyLogo
-}, {
-  name: "Venn",
-  src: vennLogo
-}, {
-  name: "Boys Get Sad Too",
-  src: boysgetsadtooLogo
-}, {
-  name: "Favored Live",
-  src: favoredliveLogo
-}, {
-  name: "BlueJ",
-  src: bluejLogo
-}, {
-  name: "True Beauty",
-  src: truebeautyLogo
-},
-// Duplicates for seamless loop
-{
-  name: "Unbound Academy",
-  src: unboundAcademyLogo
-}, {
-  name: "Prequel",
-  src: prequelLogo
-}, {
-  name: "Novatio",
-  src: novatioLogo
-}, {
-  name: "Italist",
-  src: italistLogo
-}, {
-  name: "Bonsai",
-  src: bonsaiLogo
-}, {
-  name: "DOZR",
-  src: dozrLogo
-}, {
-  name: "Stylight",
-  src: stylightLogo
-}, {
-  name: "MyBestBrands",
-  src: mybestbrandsLogo
-}, {
-  name: "Verishop",
-  src: verishopLogo
-}, {
-  name: "EGO",
-  src: egoLogo
-}, {
-  name: "Hewi",
-  src: hewiLogo
-}, {
-  name: "RaiseRight",
-  src: raiserightLogo
-}, {
-  name: "FlipGive",
-  src: flipgiveLogo
-}, {
-  name: "Triangle",
-  src: triangleLogo
-}, {
-  name: "Bright+Early",
-  src: brightearlyLogo
-}, {
-  name: "Venn",
-  src: vennLogo
-}, {
-  name: "Boys Get Sad Too",
-  src: boysgetsadtooLogo
-}, {
-  name: "Favored Live",
-  src: favoredliveLogo
-}, {
-  name: "BlueJ",
-  src: bluejLogo
-}, {
-  name: "True Beauty",
-  src: truebeautyLogo
-}];
 const solutions = [{
-  name: "Sales",
-  image: crmManagementImg,
-  link: "/services/sales-gtm"
-}, {
   name: "Support",
   image: customerSupportImg,
   link: "/services/customer-support"
+}, {
+  name: "Revenue",
+  image: crmManagementImg,
+  link: "/services/sales-gtm"
 }, {
   name: "Marketing",
   image: processAutomationImg,
@@ -170,10 +26,6 @@ const solutions = [{
   name: "Finance",
   image: financeAccountingImg,
   link: "/services/finance-accounting"
-}, {
-  name: "Executive Assistance",
-  image: hrAdminImg,
-  link: "/services/executive-assistance"
 }, {
   name: "Back Office",
   image: hrAdminImg,
@@ -339,7 +191,7 @@ const Hero = () => {
             duration: 0.5,
             delay: 0.3
           }} className="text-xl md:text-2xl font-semibold text-foreground text-center mb-8">
-              Which function are you hiring for?
+              What are you hiring for?
             </motion.h2>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8">
               {solutions.map((solution, index) => <Link key={solution.name} to={solution.link} className="group">
@@ -390,56 +242,6 @@ const Hero = () => {
             </motion.div>
           </div>
 
-          {/* Social Proof Section */}
-          <div className="relative z-10 px-6 md:px-12 lg:px-20 pb-12 md:pb-16 mt-8 md:mt-12">
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12">
-              {/* Trust text */}
-              <motion.div initial={{
-              opacity: 0,
-              x: -20
-            }} animate={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.5,
-              delay: 0.4
-            }} className="shrink-0">
-                <p className="text-sm md:text-base text-muted-foreground font-medium">
-                  Trusted by startups like yours
-                  <br />
-                  to fuel growth
-                </p>
-              </motion.div>
-
-              {/* Logo carousel container with mask for true transparency fade */}
-              <div className="relative flex-1 w-full min-w-0 overflow-hidden" style={{
-              maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
-              WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)"
-            }}>
-                {/* Scrolling logos */}
-                <div className="flex w-max">
-                  <motion.div key="logo-carousel" className="flex items-center gap-6 md:gap-8" animate={{
-                  x: ["0%", "-50%"]
-                }} transition={{
-                  x: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 60,
-                    ease: "linear"
-                  }
-                }}>
-                    {logos.map((logo, index) => <div key={`${logo.name}-${index}`} className="flex items-center justify-center shrink-0 h-6 md:h-8">
-                        {logo.src ? <img src={logo.src} alt={logo.name} className="h-full w-auto object-contain opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" /> : <div className="h-5 md:h-6 px-4 flex items-center justify-center bg-white/50 rounded-lg border border-sage/20">
-                            <span className="text-xs font-medium text-muted-foreground whitespace-nowrap">
-                              {logo.name}
-                            </span>
-                          </div>}
-                      </div>)}
-                  </motion.div>
-                </div>
-              </div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>;

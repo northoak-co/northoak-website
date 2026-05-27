@@ -21,7 +21,6 @@ import {
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import {
   Accordion,
   AccordionItem,
@@ -914,7 +913,6 @@ const HowItWorks = () => {
           </div>
         </section>
 
-        <CTASection />
       </main>
 
       <Footer />

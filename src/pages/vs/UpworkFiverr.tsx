@@ -3,7 +3,8 @@ import { ArrowRight, Users, Shield, Clock } from "lucide-react";
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
+import LogoCarousel from "@/components/LogoCarousel";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import {
   Accordion,
   AccordionItem,
@@ -208,6 +209,8 @@ const UpworkFiverr = () => {
           </div>
         </section>
 
+        <LogoCarousel />
+
         {/* Comparison Table */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-6">
@@ -253,7 +256,7 @@ const UpworkFiverr = () => {
         </section>
 
         {/* Callout Cards */}
-        <section className="py-12 bg-card">
+        <section className="py-12" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
               {calloutCards.map((card, index) => (
@@ -263,7 +266,7 @@ const UpworkFiverr = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-card rounded-2xl border border-border p-6"
+                  className="bg-background rounded-2xl border border-border p-6"
                 >
                   <div className="w-12 h-12 bg-sage/10 rounded-xl flex items-center justify-center mb-4">
                     <card.icon className="w-6 h-6 text-sage" />
@@ -316,7 +319,7 @@ const UpworkFiverr = () => {
           </div>
         </section>
 
-        <CTASection />
+        <ClientTestimonials />
       </main>
 
       <Footer />

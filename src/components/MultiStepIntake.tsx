@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -8,12 +10,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
 const services = [
-  { value: "crm-management", label: "CRM Management" },
-  { value: "customer-support", label: "Customer Support" },
-  { value: "hr-admin", label: "HR Admin" },
-  { value: "virtual-assistant", label: "Virtual Assistant" },
-  { value: "finance-accounting", label: "Finance & Accounting" },
-  { value: "back-office-admin", label: "Back Office Admin" },
+  { value: "customer-support", label: "Support" },
+  { value: "sales-gtm", label: "Revenue" },
+  { value: "marketing", label: "Marketing" },
+  { value: "finance-accounting", label: "Finance" },
+  { value: "back-office-admin", label: "Back Office" },
 ];
 
 const timelines = [
@@ -41,7 +42,7 @@ type StepKey = "services" | "timeline" | "teamSize" | "journey" | "contact";
 const steps: StepKey[] = ["services", "timeline", "teamSize", "journey", "contact"];
 
 const stepCopy: Record<StepKey, { title: string; subtitle?: string }> = {
-  services: { title: "What services are you looking for?" },
+  services: { title: "What service are you looking for?" },
   timeline: { title: "How soon are you looking to get started?" },
   teamSize: { title: "How many new team members do you need?" },
   journey: { title: "What best describes your journey in outsourcing?" },
@@ -55,6 +56,7 @@ const labelFor = <T extends { value: string; label: string }>(list: T[], value: 
   list.find((o) => o.value === value)?.label ?? value;
 
 const MultiStepIntake = () => {
+  const navigate = useNavigate();
   const [stepIdx, setStepIdx] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
 
@@ -142,24 +144,33 @@ const MultiStepIntake = () => {
   };
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      {/* Progress */}
-      <div className="flex items-center justify-center gap-2 mb-12" aria-label={`Step ${stepIdx + 1} of ${steps.length}`}>
-        {steps.map((_, i) => (
-          <div
-            key={i}
-            className={`h-1.5 rounded-full transition-all duration-300 ${
-              i === stepIdx
-                ? "w-8 bg-sage"
-                : i < stepIdx
-                  ? "w-1.5 bg-sage"
-                  : "w-1.5 bg-muted-foreground/20"
-            }`}
-          />
-        ))}
+    <div className="w-full flex flex-col flex-1">
+      {/* Progress + logo + close — full width */}
+      <div className="-mx-1.5 md:-mx-5 lg:-mx-11 flex items-center gap-5 mb-20" aria-label={`Step ${stepIdx + 1} of ${steps.length}`}>
+        <Link to="/" className="shrink-0">
+          <img src={logo} alt="NorthOak" className="h-8 w-auto object-contain relative -top-[5px]" />
+        </Link>
+        <div className="flex-1 flex items-center gap-2">
+          {steps.map((_, i) => (
+            <div
+              key={i}
+              className={`flex-1 h-2 rounded-full transition-all duration-300 ${
+                i <= stepIdx ? "bg-sage" : "bg-muted-foreground/20"
+              }`}
+            />
+          ))}
+        </div>
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          aria-label="Close"
+          className="shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-sage/20 hover:bg-sage/35 text-sage transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
       </div>
 
-      <div className="min-h-[640px]">
+      <div className="max-w-4xl mx-auto w-full flex-1 flex flex-col justify-center min-h-[400px]">
         <AnimatePresence mode="wait" custom={direction}>
           <motion.div
             key={stepIdx}
@@ -169,15 +180,15 @@ const MultiStepIntake = () => {
             exit={{ opacity: 0, x: direction * -40 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground text-center mb-3">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-foreground text-center mb-4">
               {stepCopy[step].title}
             </h2>
-            <p className="text-muted-foreground text-center mb-10 min-h-[1.5rem]">
+            <p className="text-lg text-muted-foreground text-center mb-6 min-h-[1.75rem]">
               {stepCopy[step].subtitle ?? ""}
             </p>
 
           {step === "services" && (
-            <div className="grid sm:grid-cols-2 gap-3" role="radiogroup">
+            <div className="space-y-4" role="radiogroup">
               {services.map((s) => (
                 <OptionCard
                   key={s.value}
@@ -190,7 +201,7 @@ const MultiStepIntake = () => {
           )}
 
           {step === "timeline" && (
-            <div className="space-y-3" role="radiogroup">
+            <div className="space-y-4" role="radiogroup">
               {timelines.map((t) => (
                 <OptionCard
                   key={t.value}
@@ -203,7 +214,7 @@ const MultiStepIntake = () => {
           )}
 
           {step === "teamSize" && (
-            <div className="grid sm:grid-cols-2 gap-3" role="radiogroup">
+            <div className="grid sm:grid-cols-2 gap-4" role="radiogroup">
               {teamSizes.map((t) => (
                 <OptionCard
                   key={t.value}
@@ -217,7 +228,7 @@ const MultiStepIntake = () => {
           )}
 
           {step === "journey" && (
-            <div className="space-y-3" role="radiogroup">
+            <div className="space-y-4" role="radiogroup">
               {journeys.map((j) => (
                 <OptionCard
                   key={j.value}
@@ -230,88 +241,88 @@ const MultiStepIntake = () => {
           )}
 
             {step === "contact" && (
-              <div className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
+              <div className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="firstName">First name*</Label>
+                    <Label htmlFor="firstName" className="text-base">First name*</Label>
                     <Input
                       id="firstName"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      className="h-12 rounded-xl"
+                      className="h-14 rounded-2xl text-base"
                       autoComplete="given-name"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="lastName">Last name</Label>
+                    <Label htmlFor="lastName" className="text-base">Last name</Label>
                     <Input
                       id="lastName"
                       value={lastName}
                       onChange={(e) => setLastName(e.target.value)}
-                      className="h-12 rounded-xl"
+                      className="h-14 rounded-2xl text-base"
                       autoComplete="family-name"
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="company">Company name*</Label>
+                  <Label htmlFor="company" className="text-base">Company name*</Label>
                   <Input
                     id="company"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    className="h-12 rounded-xl"
+                    className="h-14 rounded-2xl text-base"
                     autoComplete="organization"
                     required
                   />
                 </div>
-                <div className="grid sm:grid-cols-2 gap-4">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Business phone</Label>
+                    <Label htmlFor="phone" className="text-base">Business phone</Label>
                     <Input
                       id="phone"
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="h-12 rounded-xl"
+                      className="h-14 rounded-2xl text-base"
                       autoComplete="tel"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Business email*</Label>
+                    <Label htmlFor="email" className="text-base">Business email*</Label>
                     <Input
                       id="email"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="h-12 rounded-xl"
+                      className="h-14 rounded-2xl text-base"
                       autoComplete="email"
                       required
                     />
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="notes">Additional comments</Label>
+                  <Label htmlFor="notes" className="text-base">Additional comments</Label>
                   <Textarea
                     id="notes"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
-                    className="min-h-[100px] rounded-xl resize-none"
+                    className="min-h-[150px] rounded-2xl resize-none text-base"
                   />
                 </div>
               </div>
             )}
 
             {(stepIdx > 0 || isLast) && (
-              <div className="flex flex-wrap justify-center items-center gap-3 mt-8">
+              <div className="flex flex-wrap justify-center items-center gap-4 mt-12">
                 {stepIdx > 0 && (
                   <button
                     type="button"
                     onClick={goBack}
                     disabled={isSubmitting}
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-foreground/5 hover:bg-foreground/10 text-sm font-medium text-foreground transition-colors disabled:opacity-50"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full bg-foreground/5 hover:bg-foreground/10 text-base font-medium text-foreground transition-colors disabled:opacity-50"
                   >
-                    <ArrowLeft className="w-4 h-4" /> Back
+                    <ArrowLeft className="w-5 h-5" /> Back
                   </button>
                 )}
                 {isLast && (
@@ -320,7 +331,7 @@ const MultiStepIntake = () => {
                     variant="hero"
                     onClick={handleSubmit}
                     disabled={!canSubmit() || isSubmitting}
-                    className="rounded-full px-8"
+                    className="rounded-full px-12 py-3 text-base"
                   >
                     {isSubmitting ? "Submitting..." : "Submit"}
                   </Button>
@@ -350,7 +361,7 @@ const OptionCard = ({
     role="radio"
     aria-checked={selected}
     onClick={onClick}
-    className={`w-full p-5 rounded-2xl border-2 transition-all ${
+    className={`w-full p-7 rounded-3xl border-2 transition-all ${
       center ? "text-center" : "text-left"
     } ${
       selected
@@ -358,7 +369,7 @@ const OptionCard = ({
         : "border-border hover:border-sage/40 bg-card"
     }`}
   >
-    <span className="font-medium text-foreground">{label}</span>
+    <span className="text-lg font-medium text-foreground">{label}</span>
   </button>
 );
 

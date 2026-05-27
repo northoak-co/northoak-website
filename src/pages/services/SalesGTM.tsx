@@ -3,9 +3,10 @@ import { TrendingUp, ArrowRight, Check } from "lucide-react";
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import { pageMeta, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import ServiceHero from "@/components/ServiceHero";
+import LogoCarousel from "@/components/LogoCarousel";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import crmManagementImg from "@/assets/characters/crm-management.png";
 
 export const meta = () => [
@@ -78,6 +79,7 @@ const SalesGTM = () => {
           imageAlt="Sales specialist"
           guarantee="✓ Guaranteed service · Starts at $2,000/mo"
         />
+        <LogoCarousel />
 
         {/* Context section */}
         <section className="py-16 md:py-24 bg-background">
@@ -97,7 +99,7 @@ const SalesGTM = () => {
         </section>
 
         {/* Tasks */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-16 md:py-24" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">What NorthOak handles in your sales org</h2>
@@ -105,7 +107,7 @@ const SalesGTM = () => {
             </motion.div>
             <div className="max-w-2xl mx-auto grid gap-4">
               {tasks.map((task, index) => (
-                <motion.div key={index} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="flex items-start gap-3 bg-background rounded-xl border border-border p-4">
+                <motion.div key={index} initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.08 }} className="flex items-start gap-3 bg-background rounded-2xl border border-border p-4">
                   <span className="flex-shrink-0 w-5 h-5 bg-sage/10 rounded-full flex items-center justify-center mt-0.5">
                     <Check className="w-3 h-3 text-sage" />
                   </span>
@@ -134,7 +136,7 @@ const SalesGTM = () => {
         </section>
 
         {/* Roles */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-16 md:py-24" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
               <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">Sales roles available through NorthOak</h2>
@@ -156,7 +158,7 @@ const SalesGTM = () => {
           </div>
         </section>
 
-        <CTASection />
+        <ClientTestimonials />
       </main>
       <Footer />
     </div>

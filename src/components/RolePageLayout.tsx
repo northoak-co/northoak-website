@@ -3,8 +3,8 @@ import { Check, Clock, LucideIcon } from "lucide-react";
 import { Link } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
-import Partners from "./Partners";
-import CTASection from "./CTASection";
+import LogoCarousel from "./LogoCarousel";
+import ClientTestimonials from "./ClientTestimonials";
 import ServiceHero from "./ServiceHero";
 import {
   Accordion,
@@ -79,6 +79,7 @@ const RolePageLayout = ({
           imageAlt={title}
           guarantee="✓ Guaranteed service"
         />
+        <LogoCarousel />
 
         {/* TL;DR Section */}
         <section className="py-6 bg-background">
@@ -167,7 +168,7 @@ const RolePageLayout = ({
         </section>
 
         {/* Tasks Section */}
-        <section className="py-16 md:py-24 bg-card">
+        <section className="py-16 md:py-24" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <motion.div
               initial={{ y: 20 }}
@@ -238,7 +239,7 @@ const RolePageLayout = ({
         </section>
 
         {/* Cost Comparison Section */}
-        <section className="py-16 md:py-20 bg-card">
+        <section className="py-16 md:py-20" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <motion.div
               initial={{ y: 20 }}
@@ -352,9 +353,8 @@ const RolePageLayout = ({
           </div>
         </section>
 
-        <CTASection />
 
-        <Partners />
+        <ClientTestimonials />
       </main>
       <Footer />
     </div>

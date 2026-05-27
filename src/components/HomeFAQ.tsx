@@ -76,6 +76,9 @@ const HomeFAQ = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground">
             Frequently asked questions
           </h2>
+          <p className="text-muted-foreground mt-4 text-base md:text-lg">
+            Everything you need to know about our services and billing.
+          </p>
         </motion.div>
 
         <motion.div

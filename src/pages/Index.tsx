@@ -1,13 +1,13 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import LogoCarousel from "@/components/LogoCarousel";
 import Services from "@/components/Services";
-import About from "@/components/About";
+import RolesHired from "@/components/RolesHired";
+import GuaranteeBanner from "@/components/GuaranteeBanner";
 import Process from "@/components/Process";
-import Testimonial from "@/components/Testimonial";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import HomeFAQ, { faqs } from "@/components/HomeFAQ";
-import Partners from "@/components/Partners";
 import SavingsCalculator from "@/components/SavingsCalculator";
-import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 import { pageMeta, faqSchema } from "@/lib/seo";
 
@@ -25,7 +25,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background relative overflow-x-hidden">
       {/* Soft background blobs */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
         <div className="absolute top-[20%] -left-[10%] w-[600px] h-[600px] bg-sage/5 rounded-full blur-[120px]" />
         <div className="absolute top-[50%] -right-[15%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]" />
         <div className="absolute top-[80%] left-[20%] w-[400px] h-[400px] bg-sage/4 rounded-full blur-[100px]" />
@@ -34,14 +34,14 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <Services />
-        <About />
+        <LogoCarousel />
+        <GuaranteeBanner />
         <Process />
-        <Testimonial />
-        <HomeFAQ />
-        <Partners />
+        <RolesHired />
+        <Services />
+        <ClientTestimonials />
         <SavingsCalculator />
-        <CTASection />
+        <HomeFAQ />
       </main>
       <Footer />
     </div>

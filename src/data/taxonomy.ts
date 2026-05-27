@@ -3,7 +3,6 @@ import {
   HeadphonesIcon,
   PiggyBank,
   FileText,
-  Briefcase,
   Megaphone,
   type LucideIcon,
 } from "lucide-react";
@@ -24,19 +23,6 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    name: "Sales",
-    slug: "sales-gtm",
-    shortDescription: "Build pipeline, manage your CRM, and drive revenue growth.",
-    icon: TrendingUp,
-    roles: [
-      { name: "Sales Development Rep", slug: "sdr", shortDescription: "Outbound prospecting and lead qualification." },
-      { name: "CRM Manager", slug: "crm-manager", shortDescription: "Keep your HubSpot, Salesforce, or Pipedrive clean and current." },
-      { name: "Sales Operations Analyst", slug: "sales-ops-analyst", shortDescription: "Reporting, tooling, and process optimization for your sales team." },
-      { name: "Lead Generation Specialist", slug: "lead-generation-specialist", shortDescription: "Research, list-building, and enrichment for outbound campaigns." },
-      { name: "Account Executive (Associate)", slug: "account-executive", shortDescription: "SMB closing and upsell support for your existing book." },
-    ],
-  },
-  {
     name: "Support",
     slug: "customer-support",
     shortDescription: "Responsive support and proactive retention across every channel.",
@@ -47,6 +33,19 @@ export const services: Service[] = [
       { name: "Technical Support Specialist", slug: "technical-support-specialist", shortDescription: "Tier-1 and Tier-2 technical troubleshooting and escalation triage." },
       { name: "Live Chat Specialist", slug: "live-chat-specialist", shortDescription: "Real-time chat coverage with fast response times and CSAT focus." },
       { name: "Onboarding Coordinator", slug: "onboarding-coordinator", shortDescription: "New hire and client onboarding logistics, documentation, and coordination." },
+    ],
+  },
+  {
+    name: "Revenue",
+    slug: "sales-gtm",
+    shortDescription: "Build pipeline, manage your CRM, and drive revenue growth.",
+    icon: TrendingUp,
+    roles: [
+      { name: "Sales Development Rep", slug: "sdr", shortDescription: "Outbound prospecting and lead qualification." },
+      { name: "CRM Manager", slug: "crm-manager", shortDescription: "Keep your HubSpot, Salesforce, or Pipedrive clean and current." },
+      { name: "Sales Operations Analyst", slug: "sales-ops-analyst", shortDescription: "Reporting, tooling, and process optimization for your sales team." },
+      { name: "Lead Generation Specialist", slug: "lead-generation-specialist", shortDescription: "Research, list-building, and enrichment for outbound campaigns." },
+      { name: "Account Executive (Associate)", slug: "account-executive", shortDescription: "SMB closing and upsell support for your existing book." },
     ],
   },
   {
@@ -73,18 +72,6 @@ export const services: Service[] = [
       { name: "Accounts Receivable Specialist", slug: "accounts-receivable-specialist", shortDescription: "Invoicing, collections follow-up, and cash application." },
       { name: "Payroll Specialist", slug: "payroll-specialist", shortDescription: "Payroll runs, tax filings, and payroll compliance." },
       { name: "Financial Analyst", slug: "financial-analyst", shortDescription: "Budgeting support, variance analysis, and management reporting." },
-    ],
-  },
-  {
-    name: "Executive Assistance",
-    slug: "executive-assistance",
-    shortDescription: "An embedded partner who handles the work so you stay in flow.",
-    icon: Briefcase,
-    roles: [
-      { name: "Executive Assistant", slug: "executive-assistant", shortDescription: "Calendar, email, travel, and high-context stakeholder coordination." },
-      { name: "Virtual Assistant", slug: "virtual-assistant", shortDescription: "Broad task support across scheduling, admin, and research." },
-      { name: "Personal Assistant", slug: "personal-assistant", shortDescription: "Personal errands, travel planning, and life admin at the executive level." },
-      { name: "Chief of Staff (Associate)", slug: "chief-of-staff-associate", shortDescription: "Project tracking, internal comms, and leadership team support." },
     ],
   },
   {

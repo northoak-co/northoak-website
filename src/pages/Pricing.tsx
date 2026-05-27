@@ -3,7 +3,6 @@ import { Check, Users, Briefcase, Shield, Clock, Headphones, Award, ArrowRight, 
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
 import { Button } from "@/components/ui/button";
 import ClientLogosCarousel from "@/components/ClientLogosCarousel";
 import { pageMeta } from "@/lib/seo";
@@ -486,7 +485,6 @@ const Pricing = () => {
           </div>
         </section>
 
-        <CTASection />
       </main>
 
       <Footer />

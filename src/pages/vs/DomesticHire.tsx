@@ -4,7 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CTASection from "@/components/CTASection";
+import LogoCarousel from "@/components/LogoCarousel";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import {
   Accordion,
   AccordionItem,
@@ -160,6 +161,8 @@ const DomesticHire = () => {
           </div>
         </section>
 
+        <LogoCarousel />
+
         {/* Calculator */}
         <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-6">
@@ -314,7 +317,7 @@ const DomesticHire = () => {
         </section>
 
         {/* Beyond the Numbers Table */}
-        <section className="py-16 bg-card">
+        <section className="py-16" style={{ backgroundColor: "hsl(102 18% 93%)" }}>
           <div className="container mx-auto px-6">
             <motion.div
               initial={{ y: 20 }}
@@ -395,7 +398,7 @@ const DomesticHire = () => {
           </div>
         </section>
 
-        <CTASection />
+        <ClientTestimonials />
       </main>
 
       <Footer />
