@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   Clock,
@@ -7,12 +8,11 @@ import {
   X,
   Users,
   FileText,
-  Rocket,
   BadgeCheck,
-  UserCheck,
   Award,
   ChevronRight,
-  Target,
+  Plus,
+  Minus,
   MessageSquare,
   BarChart3,
   CalendarCheck,
@@ -21,6 +21,8 @@ import {
 import { Link } from "react-router";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import RolesHired from "@/components/RolesHired";
+import ClientTestimonials from "@/components/ClientTestimonials";
 import {
   Accordion,
   AccordionItem,
@@ -71,7 +73,7 @@ const kpis = [
 
 const processSteps = [
   {
-    number: "01",
+    step: "Step 1",
     phase: "Outcome Mapping",
     title: "We start with your goals, not a job description",
     description:
@@ -81,11 +83,10 @@ const processSteps = [
       "Role scope + success metrics",
       "Written expectations confirmed upfront",
     ],
-    icon: Target,
   },
   {
-    number: "02",
-    phase: "Matching",
+    step: "Step 2",
+    phase: "Team Building",
     title: "Meet specialists who've already proven themselves",
     description:
       "Within days, we introduce 1–2 pre-vetted candidates. Fewer than 5% of applicants reach placement — every person you meet has cleared a four-stage process including a paid trial task on real client workflows.",
@@ -94,11 +95,10 @@ const processSteps = [
       "Assessment results + work samples",
       "Interview scheduling support",
     ],
-    icon: UserCheck,
   },
   {
-    number: "03",
-    phase: "Structured Onboarding",
+    step: "Step 3",
+    phase: "Hands-on Onboarding",
     title: "A supervised ramp, not a cold start",
     description:
       "Your specialist goes through a dedicated four-week ramp: daily check-ins, supervised task execution, and full process documentation built alongside your account manager. We don't call it done until everything is running smoothly.",
@@ -107,7 +107,6 @@ const processSteps = [
       "Daily EOD updates from day one",
       "Shared Notion documentation",
     ],
-    icon: Rocket,
   },
 ];
 
@@ -300,6 +299,8 @@ const fadeUp = {
 };
 
 const HowItWorks = () => {
+  const [openStep, setOpenStep] = useState<number>(0);
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -452,66 +453,81 @@ const HowItWorks = () => {
                 The Process
               </p>
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-foreground">
-                Three phases, all deeply managed
+                The NorthOak difference
               </h2>
+              <p className="text-muted-foreground mt-4 text-lg">
+                Most outsourcing agencies create operational tax. We create operational excellence that saves you time and headaches.
+              </p>
             </motion.div>
 
-            <div className="max-w-5xl mx-auto space-y-5">
+            <div className="max-w-3xl mx-auto space-y-3">
               {processSteps.map((step, index) => {
-                const Icon = step.icon;
+                const isOpen = openStep === index;
                 return (
                   <motion.div
-                    key={step.number}
+                    key={step.step}
                     {...fadeUp}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="grid grid-cols-1 md:grid-cols-2 bg-background rounded-3xl border border-border overflow-hidden hover:border-sage/30 hover:shadow-hover transition-all duration-300"
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
                   >
-                    {/* Left: step info */}
-                    <div className="p-8 md:p-10 md:border-r md:border-border">
-                      <div className="flex items-start gap-4 mb-6">
-                        <div
-                          className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0"
-                          style={{ background: "hsl(102 40% 20%)" }}
-                        >
-                          <span className="text-white font-bold font-mono text-sm">
-                            {step.number}
-                          </span>
-                        </div>
-                        <div>
-                          <div className="text-xs font-semibold text-sage uppercase tracking-widest mb-1">
-                            {step.phase}
+                    <button
+                      onClick={() => setOpenStep(isOpen ? -1 : index)}
+                      className={`w-full text-left rounded-2xl border transition-all duration-300 overflow-hidden ${
+                        isOpen
+                          ? "bg-sage/15 border-sage/30"
+                          : "bg-background border-border/50 hover:border-sage/20"
+                      }`}
+                    >
+                      <div className="flex items-center justify-between gap-4 px-6 py-5">
+                        <div className="flex flex-col gap-1.5">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-semibold text-sage uppercase tracking-widest shrink-0">
+                              {step.step}
+                            </span>
+                            <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-sage/15 text-sage shrink-0">
+                              {step.phase}
+                            </span>
                           </div>
-                          <h3 className="font-display text-xl md:text-2xl font-bold text-foreground leading-snug">
+                          <h3 className="font-display text-base md:text-lg font-bold text-foreground">
                             {step.title}
                           </h3>
                         </div>
+                        <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center shrink-0">
+                          {isOpen
+                            ? <Minus className="w-4 h-4 text-background" />
+                            : <Plus className="w-4 h-4 text-background" />
+                          }
+                        </div>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-sm md:text-base">
-                        {step.description}
-                      </p>
-                    </div>
 
-                    {/* Right: deliverables */}
-                    <div className="p-8 md:p-10 bg-sage/[0.03]">
-                      <div className="flex items-center gap-2 mb-6">
-                        <Icon className="w-4 h-4 text-sage" />
-                        <p className="text-xs font-semibold text-sage uppercase tracking-widest">
-                          What you get
-                        </p>
-                      </div>
-                      <ul className="space-y-4">
-                        {step.deliverables.map((item) => (
-                          <li key={item} className="flex items-center gap-3">
-                            <div className="w-5 h-5 rounded-full bg-sage/15 flex items-center justify-center flex-shrink-0">
-                              <Check className="w-3 h-3 text-sage" strokeWidth={2.5} />
+                      <AnimatePresence initial={false}>
+                        {isOpen && (
+                          <motion.div
+                            key="content"
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="px-6 pb-6 grid md:grid-cols-2 gap-6">
+                              <p className="text-muted-foreground leading-relaxed">
+                                {step.description}
+                              </p>
+                              <ul className="space-y-3">
+                                {step.deliverables.map((item) => (
+                                  <li key={item} className="flex items-center gap-3">
+                                    <div className="w-5 h-5 rounded-full bg-sage/15 flex items-center justify-center flex-shrink-0">
+                                      <Check className="w-3 h-3 text-sage" strokeWidth={2.5} />
+                                    </div>
+                                    <span className="text-sm font-medium text-foreground">{item}</span>
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                            <span className="text-sm font-medium text-foreground">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </button>
                   </motion.div>
                 );
               })}
@@ -562,6 +578,9 @@ const HowItWorks = () => {
             </div>
           </div>
         </section>
+
+        {/* ── Meet Our People ──────────────────────────────────────── */}
+        <RolesHired />
 
         {/* ── What Hands-On Looks Like ──────────────────────────────── */}
         <section className="py-20 md:py-32 bg-card">
@@ -879,6 +898,9 @@ const HowItWorks = () => {
             </div>
           </div>
         </section>
+
+        {/* ── Client Testimonials ──────────────────────────────────── */}
+        <ClientTestimonials />
 
         {/* ── FAQ ──────────────────────────────────────────────────── */}
         <section className="py-20 md:py-28 bg-background">
