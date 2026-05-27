@@ -341,8 +341,8 @@ const MiniLogoCarousel = ({ carouselLogos, duration = 20 }: { carouselLogos: { n
     <div className="relative h-8">
       <div
         className="absolute inset-0 overflow-hidden"
-        style={{ backgroundColor: "hsl(102 18% 93%)" }}
         style={{
+          backgroundColor: "hsl(102 18% 93%)",
           maskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
         }}
