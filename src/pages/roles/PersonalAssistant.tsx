@@ -1,7 +1,7 @@
 import { pageMeta } from "@/lib/seo";
 import { Users } from "lucide-react";
 import RolePageLayout from "@/components/RolePageLayout";
-import hrAdminImg from "@/assets/characters/hr-admin.png";
+import virtualAssistantImg from "@/assets/characters/virtual-assistant.png";
 
 export const meta = () => [
   ...pageMeta({ title: "Hire a Personal Assistant - NorthOak", description: "Dedicated Personal Assistant specialists for high-growth teams. Starts at $2,000/mo." }),
@@ -16,14 +16,15 @@ const faqs = [
 const Page = () => (
   <RolePageLayout
     icon={Users}
-    category="Executive Assistance"
+    subtitle="Executive Assistance"
     title="Personal Assistant"
+    image={virtualAssistantImg}
     description="Dedicated Personal Assistant specialists embedded in your team, working your hours."
     benefits={[
-      { title: "Dedicated to you", description: "Your specialist works exclusively on your account." },
-      { title: "Fast onboarding", description: "Matched and onboarded in 5 business days." },
-      { title: "All-inclusive pricing", description: "No recruiting fees, benefits, or hidden costs." },
-      { title: "Guaranteed service", description: "Free rematch if it's not a perfect fit." },
+      "Dedicated to you",
+      "Fast onboarding",
+      "All-inclusive pricing",
+      "Guaranteed service",
     ]}
     tasks={[
       { title: "Core task 1", description: "Primary responsibility for this role." },

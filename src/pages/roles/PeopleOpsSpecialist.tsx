@@ -16,14 +16,15 @@ const faqs = [
 const Page = () => (
   <RolePageLayout
     icon={Users}
-    category="HR & People Ops"
+    subtitle="HR & People Ops"
     title="People Operations Specialist"
+    image={hrAdminImg}
     description="Dedicated People Operations Specialist specialists embedded in your team, working your hours."
     benefits={[
-      { title: "Dedicated to you", description: "Your specialist works exclusively on your account." },
-      { title: "Fast onboarding", description: "Matched and onboarded in 5 business days." },
-      { title: "All-inclusive pricing", description: "No recruiting fees, benefits, or hidden costs." },
-      { title: "Guaranteed service", description: "Free rematch if it's not a perfect fit." },
+      "Dedicated to you",
+      "Fast onboarding",
+      "All-inclusive pricing",
+      "Guaranteed service",
     ]}
     tasks={[
       { title: "Core task 1", description: "Primary responsibility for this role." },
